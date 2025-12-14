@@ -115,9 +115,15 @@ header .container {
 }
 
 .menu-btn {
-  font-size: 28px;
+   font-size: 28px;
   cursor: pointer;
   margin-right: 20px;
+  color: #fff;
+  transition: 0.3s ease;
+}
+.menu-btn:hover {
+  color: #ffb400;        /* yellow */
+  transform: scale(1.1);
 }
 
 header h1 {
@@ -831,3 +837,9 @@ footer {
     transform: translateY(0);
   }
 }
+
+
+
+
+
+
