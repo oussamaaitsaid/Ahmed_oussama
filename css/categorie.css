@@ -11,31 +11,14 @@
   min-height: 100vh;
 }
 
-/* ================= BACK BUTTON ================= */
-.back-btn {
-  position: absolute;
-  top: 20px;
-  left: 20px;
-  background: #ffb400;
-  color: #222;
-  padding: 10px 18px;
-  border-radius: 8px;
-  font-weight: bold;
-  text-decoration: none;
-  z-index: 100;
-  transition: 0.3s ease;
-}
 
-.back-btn:hover {
-  background: #ffcf58;
-  transform: scale(1.05);
-}
 
 /* ================= HEADER ================= */
 .categories-header {
   text-align: center;
-  padding: 100px 20px 50px;
+  padding: 50px 20px 40px;
 }
+
 
 .categories-header h1 {
   font-size: 42px;
@@ -133,6 +116,18 @@
 .art { background-image: url("../images/art.jpg"); }
 .business { background-image: url("../images/business.jpg"); }
 
+
+.fairytale { background-image: url("../images/fairytale.jpg"); }
+.mystery { background-image: url("../images/mystery.jpg"); }
+.politics { background-image: url("../images/politics.jpg"); }
+.romance { background-image: url("../images/romance.jpg"); }
+.thriller { background-image: url("../images/thriller.jpg"); }
+.adventure { background-image: url("../images/adventure.jpg"); }
+.selfhelp { background-image: url("../images/selfhelp.jpg"); }
+.poetry { background-image: url("../images/poetry.jpg"); }
+.biography { background-image: url("../images/biography.jpg"); }
+
+
 /* ================= RESPONSIVE ================= */
 @media (max-width: 992px) {
   .categories-grid {
@@ -154,3 +149,74 @@
   }
 }
 
+
+.simple-header {
+  background: #222;
+  padding: 15px 0;
+}
+
+.simple-header .container {
+  width: 90%;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.simple-header h1 {
+  color: #fff;
+  font-size: 24px;
+}
+
+.back-btn-header {
+  position: absolute;
+  left: 0;
+  background: #ffb400;
+  color: #222;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: 0.3s ease;
+}
+
+.back-btn-header:hover {
+  background: #ffcf58;
+  transform: scale(1.05);
+}
+
+/* ================= PAGINATION ================= */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 50px;
+}
+
+.pagination button {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 6px;
+  background: #222;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.pagination button:hover:not(:disabled) {
+  background: #ffb400;
+  color: #222;
+}
+
+.pagination button.active {
+  background: #ffb400;
+  color: #222;
+}
+
+.pagination button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
