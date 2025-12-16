@@ -5,28 +5,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Library Portal</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-      .card-transition {
-        transition: all 0.8s ease-in-out;
-      }
-      .bg-welcome {
-        background-color: #ffb400;
-      }
-      .eye-icon {
-        cursor: pointer;
-      }
-    </style>
+<style>
+  .card-transition {
+    transition: all 0.8s ease-in-out;
+  }
+
+  .bg-welcome {
+    background-color: #ffb400;
+  }
+
+  .eye-icon {
+    cursor: pointer;
+  }
+
+  /* ===== BACK BUTTON (BookVerse style) ===== */
+  .back-btn {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background: #ffb400;
+    color: #222;
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-weight: bold;
+    text-decoration: none;
+    z-index: 100;
+    transition: 0.3s ease;
+  }
+
+  .back-btn:hover {
+    background: #ffcf58;
+    transform: scale(1.05);
+  }
+</style>
+
   </head>
   <body
     class="bg-gradient-to-r from-orange-50 to-white flex items-center justify-center min-h-screen font-sans relative"
   >
     <!-- Back Arrow -->
-    <a
-      href="landing.html"
-      class="absolute top-5 left-5 text-2xl text-gray-600 hover:text-gray-800 transition"
-    >
-      &#8592; Back
-    </a>
+   <a href="landing.html" class="back-btn">← Back</a>
+
 
     <div class="w-full max-w-6xl flex justify-between space-x-10 p-10">
       <!-- Form Card Left -->
