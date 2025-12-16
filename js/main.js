@@ -63,3 +63,26 @@ window.addEventListener("load", () => {
     document.getElementById("landingPage").classList.remove("hidden");
   }, 1000); // loader shows for 1.5s
 });
+
+// Get the button
+const backToTopBtn = document.getElementById("backToTop");
+
+// Show button after scrolling down 300px
+window.onscroll = function () {
+  if (
+    document.body.scrollTop > 300 ||
+    document.documentElement.scrollTop > 300
+  ) {
+    backToTopBtn.style.display = "block";
+  } else {
+    backToTopBtn.style.display = "none";
+  }
+};
+
+// Smooth scroll to top on click
+backToTopBtn.addEventListener("click", () => {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });
+});

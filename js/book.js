@@ -8,7 +8,7 @@ for (let i = 1; i <= 40; i++) {
     title: `Book Title ${i}`,
     description: "An amazing book full of knowledge and adventure.",
     price: `${10 + (i % 5) * 5} $`,
-    image: `https://via.placeholder.com/300x400?text=Book+${i}`
+    image: `https://via.placeholder.com/300x400?text=Book+${i}`,
   });
 }
 
@@ -21,7 +21,7 @@ function displayBooks(page) {
   const start = (page - 1) * booksPerPage;
   const end = start + booksPerPage;
 
-  books.slice(start, end).forEach(book => {
+  books.slice(start, end).forEach((book) => {
     const card = document.createElement("div");
     card.className = "book-card";
 
@@ -62,3 +62,5 @@ function setupPagination() {
 // Init
 displayBooks(currentPage);
 setupPagination();
+
+
