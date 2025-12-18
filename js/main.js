@@ -17,15 +17,29 @@ function cloneCards() {
 cloneCards();
 
 // Update cards per view based on screen width
-function updateCardPerView() {
-  if (window.innerWidth <= 576) cardPerView = 1;
-  else if (window.innerWidth <= 992) cardPerView = 2;
-  else cardPerView = 3;
-}
-updateCardPerView();
-window.addEventListener("resize", () => {
-  updateCardPerView();
-});
+// function updateCardPerView() {
+//   if (window.innerWidth <= 576) cardPerView = 1;
+//   else if (window.innerWidth <= 992) cardPerView = 2;
+//   else cardPerView = 3;
+// }
+// updateCardPerView();
+// window.addEventListener("resize", () => {
+//   updateCardPerView();
+// });
+
+
+  const videos = document.querySelectorAll(".hero-video");
+  let current = 0;
+  const switchTime = 8000; // 8 seconds
+
+  setInterval(() => {
+    videos[current].classList.remove("active");
+
+    current = (current + 1) % videos.length;
+
+    videos[current].classList.add("active");
+  }, switchTime);
+
 
 // Slide function
 function slideCarousel() {
