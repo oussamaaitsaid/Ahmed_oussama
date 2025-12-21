@@ -1,0 +1,127 @@
+.card-transition {
+  transition: all 0.8s ease-in-out;
+}
+
+.bg-welcome {
+  background-color: #ffb400;
+}
+
+.eye-icon {
+  cursor: pointer;
+
+  /* Disable text selection (all browsers) */
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* old Edge */
+  user-select: none;
+}
+
+/* ===== BACK BUTTON ===== */
+.back-btn {
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  background: #ffb400;
+  color: #222;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-weight: bold;
+  text-decoration: none;
+  z-index: 100;
+  transition: 0.3s ease;
+  font-size: 0.9rem;
+}
+
+.back-btn:hover {
+  background: #ffcf58;
+  transform: scale(1.05);
+}
+
+@media (min-width: 640px) {
+  .back-btn {
+    padding: 10px 18px;
+    font-size: 1rem;
+  }
+}
+
+.eye-icon {
+  cursor: pointer;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* Remove Arabic-specific font, use same as English/French */
+.font-arabic {
+  font-family: inherit; /* or use "sans-serif" */
+}
+
+
+/* Container for the select */
+.language-selector {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 50;
+}
+
+/* Style the select */
+#langSelect {
+  padding: 0.5rem 1rem;
+  border-radius: 9999px; /* fully rounded */
+  border: 2px solid #e67e22;
+  background-color: #fff;
+  color: #333;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  outline: none;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+/* Focus state */
+#langSelect:focus {
+  border-color: #cf6c17;
+  box-shadow: 0 4px 12px rgba(230, 126, 34, 0.3);
+}
+
+/* Hover state */
+#langSelect:hover {
+  border-color: #cf6c17;
+}
+
+/* Options styling (limited by browser) */
+#langSelect option {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+/* RTL support */
+body[dir="rtl"] #langSelect {
+  direction: rtl;
+  text-align: right;
+}
+
+/* Option styling */
+#langSelect option {
+  padding: 0.5rem 1rem;      /* spacing inside options */
+  background-color: #ffffff; /* white background */
+  color: #374151;            /* dark gray text */
+  font-size: 1rem;           /* readable font size */
+  text-align: left;          /* align text left by default */
+}
+
+/* RTL support for Arabic */
+body.font-arabic #langSelect option {
+  text-align: right;         /* align Arabic text to the right */
+}
+
+
+/* Mobile adjustments */
+@media (max-width: 500px) {
+  #langSelect {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.9rem;
+  }
+}
