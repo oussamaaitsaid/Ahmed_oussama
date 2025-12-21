@@ -12,29 +12,10 @@
     />
   </head>
   <button id="backToTop" title="Back to Top">↑</button>
-  <script>
-    // Show or hide button on scroll
-    window.addEventListener('scroll', () => {
-      const btn = document.getElementById('backToTop');
-      if (window.scrollY > 300) {
-        btn.style.display = 'block';
-      } else {
-        btn.style.display = 'none';
-      }
-    });
-
-    // Smooth scroll to top
-    document.getElementById('backToTop').addEventListener('click', () => {
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-      });
-    });
-
-  </script>
+  
   <body>
 
-    
+  
     <!-- ===== SIDEBAR ===== -->
     <div id="sidebar" class="sidebar">
       <a href="#" class="close-btn" onclick="toggleSidebar()">&times;</a>
@@ -101,6 +82,15 @@
 
     <!-- ===== BOOKS SECTION ===== -->
     <section id="books" class="books-section">
+      <div class="search-container">
+        <input
+          type="text"
+          id="bookSearch"
+          placeholder="search for your book"
+          maxlength="255"
+        />
+      </div>
+
       <div class="container">
         <h2>Our Collection</h2>
 
@@ -524,44 +514,18 @@
 
           <!-- Pagination -->
           <div class="pagination">
+           <button class="prev-btn">« Prev</button>
+
             <button class="page-btn" data-page="1">1</button>
             <button class="page-btn" data-page="2">2</button>
             <button class="page-btn" data-page="3">3</button>
             <button class="page-btn" data-page="4">4</button>
+
+          <button class="next-btn">Next »</button>
           </div>
+
       </div>
     </section>
-    
-    <!-- ===== BOOKS JS ===== -->
-    <script>
-      const pages = document.querySelectorAll(".books-page");
-      const pageButtons = document.querySelectorAll(".page-btn");
-
-      pageButtons.forEach((btn) => {
-        btn.addEventListener("click", () => {
-          const page = btn.getAttribute("data-page");
-
-          // Hide all pages
-          pages.forEach((p) => (p.style.display = "none"));
-
-          // Show selected page
-          document.querySelector(
-            `.books-page[data-page='${page}']`
-          ).style.display = "grid";
-
-          // Highlight active button
-          pageButtons.forEach((b) => b.classList.remove("active"));
-          btn.classList.add("active");
-        });
-      });
-
-      // Initialize first page
-      pages.forEach((p) => (p.style.display = "none"));
-      document.querySelector(`.books-page[data-page='1']`).style.display =
-        "grid";
-      pageButtons.forEach((b) => b.classList.remove("active"));
-      pageButtons[0].classList.add("active");
-    </script>
 
     <footer id="contact">
       <div class="footer-container">
@@ -581,20 +545,11 @@
     </footer>
 
     <script src="js/main.js"></script>
-    <script>
-      document
-        .querySelector(".dropdown-btn")
-        .addEventListener("click", function (e) {
-          e.preventDefault();
-
-          const menu = this.nextElementSibling;
-
-          // Toggle show/hide
-          menu.style.display =
-            menu.style.display === "block" ? "none" : "block";
-        });
-    </script>
     <script src="js/book.js"></script>
+    <script>
+     
+    </script>
+    
 
   </body>
 </html>
