@@ -615,6 +615,12 @@ footer {
 }
 
 /* Buttons */
+/* Add space between text and button */
+.book-card p {
+  margin-bottom: 15px; /* space below paragraph before button */
+}
+
+/* Buttons */
 .signup-btn {
   display: inline-block;
   padding: 10px 20px;
@@ -959,4 +965,142 @@ footer {
 #backToTop:hover {
   background-color: #ffc107;
   transform: scale(1.1);
+}
+
+/* Remove Arabic-specific font, use same as English/French */
+.font-arabic {
+  font-family: inherit; /* or use "sans-serif" */
+}
+
+/* Container for the select */
+.language-selector {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 50;
+}
+
+/* Style the select */
+#langSelect {
+  padding: 0.5rem 1rem;
+  border-radius: 9999px; /* fully rounded */
+  border: 2px solid #e67e22;
+  background-color: #fff;
+  color: #333;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  outline: none;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+/* Focus state */
+#langSelect:focus {
+  border-color: #cf6c17;
+  box-shadow: 0 4px 12px rgba(230, 126, 34, 0.3);
+}
+
+/* Hover state */
+#langSelect:hover {
+  border-color: #cf6c17;
+}
+
+/* Options styling (limited by browser) */
+#langSelect option {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+/* RTL support */
+body[dir="rtl"] #langSelect {
+  direction: rtl;
+  text-align: right;
+}
+
+/* Option styling */
+#langSelect option {
+  padding: 0.5rem 1rem; /* spacing inside options */
+  background-color: #ffffff; /* white background */
+  color: #374151; /* dark gray text */
+  font-size: 1rem; /* readable font size */
+  text-align: left; /* align text left by default */
+}
+
+/* RTL support for Arabic */
+body.font-arabic #langSelect option {
+  text-align: right; /* align Arabic text to the right */
+}
+
+/* Mobile adjustments */
+@media (max-width: 500px) {
+  #langSelect {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.9rem;
+  }
+}
+
+/* =====================================
+   ARABIC (RTL) FIX — BOOKS SECTION ONLY
+   ===================================== */
+
+/* Switch direction safely */
+html[dir="rtl"] .books {
+  direction: rtl;
+}
+
+/* Keep carousel behavior correct */
+html[dir="rtl"] .books-track {
+  flex-direction: row-reverse;
+}
+
+/* Text alignment for Arabic */
+html[dir="rtl"] .book-card {
+  text-align: right;
+}
+
+/* Paragraph readability */
+html[dir="rtl"] .book-card p {
+  direction: rtl;
+  unicode-bidi: plaintext;
+}
+
+/* Center images even in RTL */
+html[dir="rtl"] .book-card img {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* =========================
+   HEADER RTL FIX
+   ========================= */
+html[dir="rtl"] header .container {
+  direction: rtl;
+  display: flex;
+  justify-content: space-between; /* keep spacing */
+  align-items: center;
+}
+
+html[dir="rtl"] header .menu-btn {
+  order: 2; /* move menu button to the right */
+}
+
+html[dir="rtl"] header h1#headerTitle {
+  text-align: right;
+  flex: 1; /* take remaining space */
+}
+
+html[dir="rtl"] header a#headerLogin {
+  order: 1; /* move login link to the left */
+  text-align: right;
+}
+
+/* ===== HEADER LAYOUT ===== */
+header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  gap: 20px; /* space between items */
 }

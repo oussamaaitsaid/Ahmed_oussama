@@ -14,27 +14,29 @@
     <button id="backToTop" title="Go to top">↑</button>
     <!-- Loader -->
     <div id="loader">
-      <span class="book-icon"><img src="images/logo.jpg" alt="logo"></span>
-      <p class="mt-4 text-lg text-gray-700">Unlocking the world of stories…</p>
+      <span class="book-icon"><img src="images/logo.jpg" alt="logo" /></span>
+      <p id="loaderText" class="mt-4 text-lg text-gray-700">
+        Unlocking the world of stories…
+      </p>
     </div>
     <!-- ===== SIDEBAR ===== -->
     <div id="sidebar" class="sidebar">
       <a href="#" class="close-btn" onclick="toggleSidebar()">&times;</a>
 
-      <h2>BookVerse</h2>
+      <h2 id="sidebarTitle">BookVerse</h2>
 
       <ul id="navLinks">
-        <li><a href="#home" class="active">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#facts">Facts</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="#home" class="active" id="navHome">Home</a></li>
+        <li><a href="#about" id="navAbout">About</a></li>
+        <li><a href="#facts" id="navFacts">Facts</a></li>
+        <li><a href="#contact" id="navContact">Contact</a></li>
 
         <!-- Dropdown Menu -->
         <li class="dropdown">
-          <a href="#" class="dropdown-btn">More ▼</a>
+          <a href="#" class="dropdown-btn" id="navMore">More ▼</a>
           <ul class="dropdown-menu">
-            <li><a href="book.html">Books</a></li>
-            <li><a href="categorie.html">Categories</a></li>
+            <li><a href="book.html" id="navBooks">Books</a></li>
+            <li><a href="categorie.html" id="navCategories">Categories</a></li>
           </ul>
         </li>
         <div class="social-icons">
@@ -68,7 +70,7 @@
           </a>
         </div>
 
-        <a href="auth.html" class="signin-link">Se connecter</a>
+        <a href="auth.html" class="signin-link" id="signinLink">sign-in/up</a>
       </ul>
     </div>
 
@@ -76,9 +78,18 @@
     <header>
       <div class="container">
         <span class="menu-btn" onclick="toggleSidebar()">&#9776;</span>
-        <h1>BookVerse</h1>
-        <a href="auth.html">se connecter</a>
+        <h1 id="headerTitle">BookVerse</h1>
+        <a href="auth.html" id="headerLogin">sign-in/up</a>
+          <div class="absolute top-4 right-4">
+        <label for="langSelect" class="sr-only">Select Language</label>
+        <select id="langSelect" class="border px-3 py-2 rounded-lg">
+          <option value="en">English</option>
+          <option value="fr">Français</option>
+          <option value="ar">العربية</option>
+        </select>
       </div>
+      </div>
+    
     </header>
 
     <!-- ===== HOME SECTION ===== -->
@@ -92,8 +103,8 @@
         <source src="videos/library1.mp4" type="video/mp4" />
       </video>
 
-       <video class="hero-video" autoplay muted loop playsinline>
-        <source src="videos/library2.mp4" type="video/mp4" /> 
+      <video class="hero-video" autoplay muted loop playsinline>
+        <source src="videos/library2.mp4" type="video/mp4" />
       </video>
 
       <!-- Overlay -->
@@ -101,46 +112,47 @@
 
       <!-- Content -->
       <div class="hero-content">
-        <h2>Discover Your Next Favorite Book</h2>
-        <p>
+        <h2 id="heroTitle">Discover Your Next Favorite Book</h2>
+        <p id="heroDesc">
           Explore thousands of books, authors, genres, and timeless stories.
         </p>
-        <a href="#" class="btn">Start Exploring</a>
+        <a href="#" class="btn" id="heroBtn">Start Exploring</a>
       </div>
     </section>
 
     <!-- ===== ABOUT SECTION ===== -->
     <section id="about" class="about">
-      <h2>About Us</h2>
-      <p>
+      <h2 id="aboutTitle">About Us</h2>
+      <p id="aboutP1">
         BookVerse is an online bookstore created for book lovers, by book
         lovers. We believe that every story has the power to change lives,
         ignite imagination, and inspire minds of all ages. Whether you're
         seeking timeless classics, modern bestsellers, or hidden gems, BookVerse
         is your gateway to a world of stories.
       </p>
-      <p>
+      <p id="aboutP2">
         Our mission is to make books accessible to everyone, offering an easy,
         fast, and enjoyable browsing experience. We carefully curate our
         collection to include a wide variety of genres, from fiction and fantasy
         to science, history, self-help, and art design, so that every reader can
         find their perfect match.
       </p>
-      <p>
+      <p id="aboutP3">
         At BookVerse, we value community and connection. We encourage readers to
         explore, share, and discuss their favorite books. Our intuitive platform
         allows you to reserve your chosen titles, keep track of your reading
         journey, and discover new authors that inspire and challenge you.
       </p>
-      <p>
+      <p id="aboutP4">
         Join us at BookVerse and embark on a literary adventure where
         imagination knows no bounds and stories come alive.
       </p>
     </section>
 
     <section id="books" class="books">
-      <h2>Featured Books</h2>
-      <p class="books-subtitle">
+      <h2 id="booksTitle">Featured Books</h2>
+
+      <p class="books-subtitle" id="booksSubtitle">
         Discover stories that will inspire, excite, and transform your
         imagination.
       </p>
@@ -151,87 +163,95 @@
           <div class="book-card">
             <img src="images/book1.jpg" alt="Book" />
             <h3>To Kill A Mockingbird</h3>
-            <p>
+            <p id="book1Desc">
               Childhood innocence confronts racial injustice in the American
               South.
             </p>
-            <a href="#" class="signup-btn">Join Now</a>
+            <a href="#" class="signup-btn" id="joinNow1">Join Now</a>
           </div>
 
           <!-- Book Card 2 -->
           <div class="book-card">
             <img src="images/book10.jpg" alt="Book" />
             <h3>The Power Of Now</h3>
-            <p>
+            <p id="book2Desc">
               A spiritual guide to achieving peace by living in the present
               moment.
             </p>
-            <a href="#" class="signup-btn">Join Now</a>
+            <a href="#" class="signup-btn" id="joinNow2">Join Now</a>
           </div>
 
           <!-- Book Card 3 -->
           <div class="book-card">
             <img src="images/book15.jpg" alt="Book" />
             <h3>Think And Grow Rich</h3>
-            <p>
+            <p id="book3Desc">
               A self-help guide detailing 13 steps to turn thought into wealth
               and success.
             </p>
-            <a href="#" class="signup-btn">Join Now</a>
+            <a href="#" class="signup-btn" id="joinNow3">Join Now</a>
           </div>
 
           <!-- Book Card 4 -->
           <div class="book-card">
             <img src="images/book4.jpg" alt="Book" />
             <h3>The Alchemist</h3>
-            <p>A shepherd’s journey to discover personal legend and destiny.</p>
-            <a href="#" class="signup-btn">Join Now</a>
+            <p id="book4Desc">
+              A shepherd’s journey to discover personal legend and destiny.
+            </p>
+            <a href="#" class="signup-btn" id="joinNow4">Join Now</a>
           </div>
 
           <!-- Book Card 5 -->
           <div class="book-card">
             <img src="images/book5.jpg" alt="Book" />
             <h3>Pride & Prejudice</h3>
-            <p>A romantic novel about manners, upbringing, and marriage.</p>
-            <a href="#" class="signup-btn">Join Now</a>
+            <p id="book5Desc">
+              A romantic novel about manners, upbringing, and marriage.
+            </p>
+            <a href="#" class="signup-btn" id="joinNow5">Join Now</a>
           </div>
 
           <!-- Book Card 6 -->
           <div class="book-card">
             <img src="images/book.50.jpg" alt="Book" />
             <h3>The Hobbit</h3>
-            <p>A hobbit’s quest to reclaim a lost treasure in Middle-earth.</p>
-            <a href="#" class="signup-btn">Join Now</a>
+            <p id="book6Desc">
+              A hobbit’s quest to reclaim a lost treasure in Middle-earth.
+            </p>
+            <a href="#" class="signup-btn" id="joinNow6">Join Now</a>
           </div>
 
           <!-- Book Card 7 -->
           <div class="book-card">
             <img src="images/book11.jpg" alt="Book" />
             <h3>Harry Potter</h3>
-            <p>The magical adventures of a young wizard and his friends.</p>
-            <a href="#" class="signup-btn">Join Now</a>
+            <p id="book7Desc">
+              The magical adventures of a young wizard and his friends.
+            </p>
+            <a href="#" class="signup-btn" id="joinNow7">Join Now</a>
           </div>
 
           <!-- Book Card 8 -->
           <div class="book-card">
             <img src="images/book8.jpg" alt="Book" />
             <h3>Educated</h3>
-            <p>
+            <p id="book8Desc">
               Memoir of a girl raised by survivalists who began school at
               seventeen and earned a PhD.
             </p>
-            <a href="#" class="signup-btn">Join Now</a>
+            <a href="#" class="signup-btn" id="joinNow8">Join Now</a>
           </div>
 
           <!-- Book Card 9 -->
           <div class="book-card">
             <img src="images/book9.jpg" alt="Book" />
             <h3>Becoming</h3>
-            <p>
+            <p id="book9Desc">
               Michelle Obama's memoir about her life from Chicago to the White
               House.
             </p>
-            <a href="#" class="signup-btn">Join Now</a>
+            <a href="#" class="signup-btn" id="joinNow9">Join Now</a>
           </div>
         </div>
       </div>
@@ -239,54 +259,64 @@
 
     <!-- ===== FACTS SECTION ===== -->
     <section id="facts" class="facts">
-      <h2>📘 Book Facts & News</h2>
+      <h2 id="factsTitle">📘 Book Facts & News</h2>
 
       <div class="facts-grid">
         <div class="fact-box">
-          <h3>📚 129 Million Books</h3>
-          <p>There are over 129 million books published in the world.</p>
+          <h3 id="fact1Title">📚 129 Million Books</h3>
+          <p id="fact1Desc">
+            There are over 129 million books published in the world.
+          </p>
         </div>
 
         <div class="fact-box">
-          <h3>📖 Oldest Book</h3>
-          <p>The oldest printed book is the “Diamond Sutra” from 868 AD.</p>
+          <h3 id="fact2Title">📖 Oldest Book</h3>
+          <p id="fact2Desc">
+            The oldest printed book is the “Diamond Sutra” from 868 AD.
+          </p>
         </div>
 
         <div class="fact-box">
-          <h3>🔥 Trending News</h3>
-          <p>Fantasy novels are the fastest-growing book category in 2025!</p>
+          <h3 id="fact3Title">🔥 Trending News</h3>
+          <p id="fact3Desc">
+            Fantasy novels are the fastest-growing book category in 2025!
+          </p>
         </div>
 
         <div class="fact-box">
-          <h3>🏆 Best-Selling Book</h3>
-          <p>“Don Quixote” is the best-selling novel of all time.</p>
+          <h3 id="fact4Title">🏆 Best-Selling Book</h3>
+          <p id="fact4Desc">
+            “Don Quixote” is the best-selling novel of all time.
+          </p>
         </div>
       </div>
       <div class="facts-grid">
         <div class="fact-box">
-          <h3>🌎 Most Translated Book</h3>
-          <p>
+          <h3 id="fact5Title">🌎 Most Translated Book</h3>
+          <p id="fact5Desc">
             The Bible is the most translated book, available in over 3,400
             languages.
           </p>
         </div>
 
         <div class="fact-box">
-          <h3>💡 Reading Benefits</h3>
-          <p>
+          <h3 id="fact6Title">💡 Reading Benefits</h3>
+          <p id="fact6Desc">
             Reading regularly improves memory, focus, and emotional
             intelligence.
           </p>
         </div>
 
         <div class="fact-box">
-          <h3>📈 E-Book Growth</h3>
-          <p>E-books now make up over 25% of global book sales.</p>
+          <h3 id="fact7Title">📈 E-Book Growth</h3>
+          <p id="fact7Desc">
+            E-books now make up over 25% of global book sales.
+          </p>
         </div>
 
         <div class="fact-box">
-          <h3>🎉 Book Festivals</h3>
-          <p>
+          <h3 id="fact8Title">🎉 Book Festivals</h3>
+          <p id="fact8Desc">
             The largest book fair is the Frankfurt Book Fair, attracting over
             300,000 visitors annually.
           </p>
@@ -295,8 +325,8 @@
     </section>
 
     <section id="contact" class="contact">
-      <h2>Contact Us</h2>
-      <p class="contact-subtitle">
+      <h2 id="contactTitle">Contact Us</h2>
+      <p class="contact-subtitle" id="contactSubtitle">
         Have questions or suggestions? We'd love to hear from you!
       </p>
 
@@ -309,25 +339,27 @@
           placeholder="Your Message"
           required
         ></textarea>
-        <button type="submit" class="contact-btn">Send Message</button>
+        <button type="submit" class="contact-btn" id="send">Send Message</button>
       </form>
     </section>
 
     <!-- ===== FOOTER ===== -->
     <footer id="contact">
       <div class="footer-container">
-        <h3>BookVerse</h3>
-        <p>Your gateway to unlimited stories.</p>
+        <h3 id="footerTitle">BookVerse</h3>
+        <p id="footerDesc">Your gateway to unlimited stories.</p>
 
         <div class="footer-links">
-          <a href="#home">Home</a>
-          <a href="#about">About</a>
-          <a href="#facts">Facts</a>
+          <a href="#home" id="navHome">Home</a>
+          <a href="#about" id="navAbout">About</a>
+          <a href="#facts" id="navFacts">Facts</a>
           <a href="#">Privacy</a>
           <a href="#">Terms</a>
         </div>
 
-        <p class="copy">© 2025 BookVerse. All Rights Reserved.</p>
+        <p class="copy" id="footerCopy">
+          © 2025 BookVerse. All Rights Reserved.
+        </p>
       </div>
     </footer>
 
