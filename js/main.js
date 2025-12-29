@@ -1,6 +1,8 @@
-function toggleSidebar() {
+function toggleSidebar(e) {
+  if (e) e.preventDefault(); // prevent jump to top
   document.getElementById("sidebar").classList.toggle("open");
 }
+
 const track = document.querySelector(".books-track");
 const cards = document.querySelectorAll(".book-card");
 let cardPerView = 3;
@@ -79,6 +81,35 @@ window.onscroll = function () {
     backToTopBtn.style.display = "none";
   }
 };
+
+const feedbackTrack = document.querySelector(".feedback-track");
+const feedbackCards = document.querySelectorAll(".feedback-card");
+const cardCount = feedbackCards.length;
+
+let feedbackIndex = 0;
+
+// Clone first card and append to the end for seamless loop
+const firstClone = feedbackCards[0].cloneNode(true);
+feedbackTrack.appendChild(firstClone);
+
+function showNextFeedback() {
+  feedbackIndex++;
+  feedbackTrack.style.transition = "transform 0.5s ease-in-out";
+  feedbackTrack.style.transform = `translateX(-${feedbackIndex * 100}%)`;
+
+  // Reset to start when reaching the clone
+  if (feedbackIndex === cardCount) {
+    setTimeout(() => {
+      feedbackTrack.style.transition = "none";
+      feedbackTrack.style.transform = `translateX(0)`;
+      feedbackIndex = 0;
+    }, 500); // wait for transition to finish
+  }
+}
+
+// Auto slide every 4 seconds
+setInterval(showNextFeedback, 4000);
+
 
 // Smooth scroll to top on click
 backToTopBtn.addEventListener("click", () => {
@@ -428,3 +459,28 @@ function setLanguage(lang) {
 
   applyBooksLanguage(lang);
 }
+
+// ======================== CONDITION BUTTON ===============================
+// Select all protected buttons
+const protectedButtons = document.querySelectorAll(".protected-btn");
+
+protectedButtons.forEach((btn) => {
+  btn.addEventListener("click", (e) => {
+    e.preventDefault(); // prevent default link
+
+    const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
+
+    if (!isLoggedIn) {
+      alert("Please log in first to access this page.");
+      window.location.href = "auth.html"; // redirect to login/register
+      return;
+    }
+
+    // Logged in: redirect based on button
+    if (btn.id === "heroBtn") {
+      window.location.href = "categorie.html"; // Start Exploring
+    } else if (btn.id.startsWith("joinNow")) {
+      window.location.href = "book.html"; // Join Now buttons
+    }
+  });
+});

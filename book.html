@@ -15,6 +15,13 @@
   
   <body>
 
+    <script>
+      if (localStorage.getItem("isLoggedIn") !== "true") {
+        window.location.href = "auth.html";
+      }
+    </script>
+
+
   
     <!-- ===== SIDEBAR ===== -->
     <div id="sidebar" class="sidebar">
@@ -24,9 +31,9 @@
 
       <ul id="navLinks">
         <li><a href="landing.html" class="active">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#facts">Facts</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="landing.html">About</a></li>
+        <li><a href="landing.html">Facts</a></li>
+        <li><a href="landing.html">Contact</a></li>
 
         <!-- Dropdown Menu -->
         <li class="dropdown">
@@ -67,16 +74,33 @@
           </a>
         </div>
 
-        <a href="auth.html" class="signin-link">Se connecter</a>
+        <a href="auth.html" class="signin-link">sign-in / up</a>
       </ul>
     </div>
 
     <!-- ===== HEADER ===== -->
-    <header>
-      <div class="container">
+       <header>
+      <div class="container flex items-center justify-between relative p-4">
         <span class="menu-btn" onclick="toggleSidebar()">&#9776;</span>
-        <h1>BookVerse</h1>
-        <a href="auth.html">se connecter</a>
+        <h1 id="headerTitle">BookVerse</h1>
+
+        <!-- Sign in / up -->
+        <a href="auth.html" id="headerLogin">sign-in / up</a>
+
+        <!-- Welcome message (separated) -->
+        <span id="userName" class="welcome-msg" style="display: none"></span>
+
+        <!-- Logout link -->
+        <a
+          href="#"
+          class="logout-link"
+          id="logoutLink"
+          style="display: none"
+          onclick="logout()"
+          >Logout</a
+        >
+
+      
       </div>
     </header>
 
@@ -547,7 +571,29 @@
     <script src="js/main.js"></script>
     <script src="js/book.js"></script>
     <script>
-     
+      const headerLogin = document.getElementById("headerLogin");
+      const logoutLink = document.getElementById("logoutLink");
+      const userNameSpan = document.getElementById("userName");
+
+      const isLoggedIn = localStorage.getItem("isLoggedIn");
+      const user = JSON.parse(localStorage.getItem("currentUser"));
+
+      if (isLoggedIn === "true" && user) {
+        headerLogin.style.display = "none";
+        logoutLink.style.display = "inline-block";
+        userNameSpan.style.display = "inline-block";
+        userNameSpan.textContent = "Hi, " + user.name;
+      } else {
+        headerLogin.style.display = "inline-block";
+        logoutLink.style.display = "none";
+        userNameSpan.style.display = "none";
+      }
+
+      function logout() {
+        localStorage.removeItem("isLoggedIn");
+        localStorage.removeItem("currentUser");
+        window.location.href = "auth.html";
+      }
     </script>
     
 

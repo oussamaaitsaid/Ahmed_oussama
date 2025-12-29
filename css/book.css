@@ -2,6 +2,9 @@
   padding: 50px 20px;
   background: #f9f9f9;
   text-align: center;
+  padding-top: 120px; /* adjust to your header height */
+
+
 }
 
 .books-section h2 {
@@ -185,6 +188,7 @@
   max-width: 400px;
   margin: 0 auto 30px;
   text-align: center;
+  margin-top: 30px; /* adjust if needed */
 }
 
 #bookSearch {

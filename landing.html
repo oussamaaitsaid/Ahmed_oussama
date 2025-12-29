@@ -21,7 +21,7 @@
     </div>
     <!-- ===== SIDEBAR ===== -->
     <div id="sidebar" class="sidebar">
-      <a href="#" class="close-btn" onclick="toggleSidebar()">&times;</a>
+      <a href="#" class="close-btn" onclick="toggleSidebar(event)">&times;</a>
 
       <h2 id="sidebarTitle">BookVerse</h2>
 
@@ -76,20 +76,35 @@
 
     <!-- ===== HEADER ===== -->
     <header>
-      <div class="container">
+      <div class="container flex items-center justify-between relative p-4">
         <span class="menu-btn" onclick="toggleSidebar()">&#9776;</span>
         <h1 id="headerTitle">BookVerse</h1>
-        <a href="auth.html" id="headerLogin">sign-in/up</a>
-          <div class="absolute top-4 right-4">
-        <label for="langSelect" class="sr-only">Select Language</label>
-        <select id="langSelect" class="border px-3 py-2 rounded-lg">
-          <option value="en">English</option>
-          <option value="fr">Français</option>
-          <option value="ar">العربية</option>
-        </select>
+
+        <!-- Sign in / up -->
+        <a href="auth.html" id="headerLogin">sign-in / up</a>
+
+        <!-- Welcome message (separated) -->
+        <span id="userName" class="welcome-msg" style="display: none"></span>
+
+        <!-- Logout link -->
+        <a
+          href="#"
+          class="logout-link"
+          id="logoutLink"
+          style="display: none"
+          onclick="logout()"
+          >Logout</a
+        >
+
+        <div class="absolute top-4 right-4">
+          <label for="langSelect" class="sr-only">Select Language</label>
+          <select id="langSelect" class="border px-3 py-2 rounded-lg">
+            <option value="en">English</option>
+            <option value="fr">Français</option>
+            <option value="ar">العربية</option>
+          </select>
+        </div>
       </div>
-      </div>
-    
     </header>
 
     <!-- ===== HOME SECTION ===== -->
@@ -116,7 +131,7 @@
         <p id="heroDesc">
           Explore thousands of books, authors, genres, and timeless stories.
         </p>
-        <a href="#" class="btn" id="heroBtn">Start Exploring</a>
+        <a href="#" class="btn protected-btn" id="heroBtn">Start Exploring</a>
       </div>
     </section>
 
@@ -167,7 +182,9 @@
               Childhood innocence confronts racial injustice in the American
               South.
             </p>
-            <a href="#" class="signup-btn" id="joinNow1">Join Now</a>
+            <a href="#" class="signup-btn protected-btn" id="joinNow1"
+              >Join Now</a
+            >
           </div>
 
           <!-- Book Card 2 -->
@@ -178,7 +195,9 @@
               A spiritual guide to achieving peace by living in the present
               moment.
             </p>
-            <a href="#" class="signup-btn" id="joinNow2">Join Now</a>
+            <a href="#" class="signup-btn protected-btn" id="joinNow2"
+              >Join Now</a
+            >
           </div>
 
           <!-- Book Card 3 -->
@@ -189,7 +208,9 @@
               A self-help guide detailing 13 steps to turn thought into wealth
               and success.
             </p>
-            <a href="#" class="signup-btn" id="joinNow3">Join Now</a>
+            <a href="#" class="signup-btn protected-btn" id="joinNow3"
+              >Join Now</a
+            >
           </div>
 
           <!-- Book Card 4 -->
@@ -199,7 +220,9 @@
             <p id="book4Desc">
               A shepherd’s journey to discover personal legend and destiny.
             </p>
-            <a href="#" class="signup-btn" id="joinNow4">Join Now</a>
+            <a href="#" class="signup-btn protected-btn" id="joinNow4"
+              >Join Now</a
+            >
           </div>
 
           <!-- Book Card 5 -->
@@ -209,7 +232,9 @@
             <p id="book5Desc">
               A romantic novel about manners, upbringing, and marriage.
             </p>
-            <a href="#" class="signup-btn" id="joinNow5">Join Now</a>
+            <a href="#" class="signup-btn protected-btn" id="joinNow5"
+              >Join Now</a
+            >
           </div>
 
           <!-- Book Card 6 -->
@@ -219,7 +244,9 @@
             <p id="book6Desc">
               A hobbit’s quest to reclaim a lost treasure in Middle-earth.
             </p>
-            <a href="#" class="signup-btn" id="joinNow6">Join Now</a>
+            <a href="#" class="signup-btn protected-btn" id="joinNow6"
+              >Join Now</a
+            >
           </div>
 
           <!-- Book Card 7 -->
@@ -229,7 +256,9 @@
             <p id="book7Desc">
               The magical adventures of a young wizard and his friends.
             </p>
-            <a href="#" class="signup-btn" id="joinNow7">Join Now</a>
+            <a href="#" class="signup-btn protected-btn" id="joinNow7"
+              >Join Now</a
+            >
           </div>
 
           <!-- Book Card 8 -->
@@ -240,7 +269,9 @@
               Memoir of a girl raised by survivalists who began school at
               seventeen and earned a PhD.
             </p>
-            <a href="#" class="signup-btn" id="joinNow8">Join Now</a>
+            <a href="#" class="signup-btn protected-btn" id="joinNow8"
+              >Join Now</a
+            >
           </div>
 
           <!-- Book Card 9 -->
@@ -251,7 +282,9 @@
               Michelle Obama's memoir about her life from Chicago to the White
               House.
             </p>
-            <a href="#" class="signup-btn" id="joinNow9">Join Now</a>
+            <a href="#" class="signup-btn protected-btn" id="joinNow9"
+              >Join Now</a
+            >
           </div>
         </div>
       </div>
@@ -324,6 +357,31 @@
       </div>
     </section>
 
+    <section id="feedbacks" class="feedback">
+      <h2>Client Feedbacks</h2>
+      <div class="feedback-track">
+        <div class="feedback-card">
+          <p>"BookVerse transformed my reading habits! Highly recommend."</p>
+          <h3>- Sarah L.</h3>
+        </div>
+        <div class="feedback-card">
+          <p>"Amazing selection and easy navigation. I love it!"</p>
+          <h3>- James K.</h3>
+        </div>
+        <div class="feedback-card">
+          <p>"I found all the books I was looking for. Great service."</p>
+          <h3>- Emily R.</h3>
+        </div>
+        <div class="feedback-card">
+          <p>
+            "A paradise for book lovers. Fast delivery and friendly support."
+          </p>
+          <h3>- Michael T.</h3>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
     <section id="contact" class="contact">
       <h2 id="contactTitle">Contact Us</h2>
       <p class="contact-subtitle" id="contactSubtitle">
@@ -339,7 +397,9 @@
           placeholder="Your Message"
           required
         ></textarea>
-        <button type="submit" class="contact-btn" id="send">Send Message</button>
+        <button type="submit" class="contact-btn" id="send">
+          Send Message
+        </button>
       </form>
     </section>
 
@@ -364,5 +424,30 @@
     </footer>
 
     <script src="js/main.js"></script>
+    <script>
+      const headerLogin = document.getElementById("headerLogin");
+      const logoutLink = document.getElementById("logoutLink");
+      const userNameSpan = document.getElementById("userName");
+
+      const isLoggedIn = localStorage.getItem("isLoggedIn");
+      const user = JSON.parse(localStorage.getItem("currentUser"));
+
+      if (isLoggedIn === "true" && user) {
+        headerLogin.style.display = "none";
+        logoutLink.style.display = "inline-block";
+        userNameSpan.style.display = "inline-block";
+        userNameSpan.textContent = "Hi, " + user.name;
+      } else {
+        headerLogin.style.display = "inline-block";
+        logoutLink.style.display = "none";
+        userNameSpan.style.display = "none";
+      }
+
+      function logout() {
+        localStorage.removeItem("isLoggedIn");
+        localStorage.removeItem("currentUser");
+        window.location.href = "auth.html";
+      }
+    </script>
   </body>
 </html>

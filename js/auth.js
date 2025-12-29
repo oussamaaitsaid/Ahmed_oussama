@@ -14,21 +14,23 @@ const translations = {
     registerTitle: "Register",
     welcomeLoginTitle: "Welcome Back!",
     welcomeRegisterTitle: "Hello, Reader!",
-    welcomeLoginText: "Login to access your library account and explore thousands of books.",
-    welcomeRegisterText: "Register now to create your library account and start exploring.",
+    welcomeLoginText:
+      "Login to access your library account and explore thousands of books.",
+    welcomeRegisterText:
+      "Register now to create your library account and start exploring.",
     switchToRegister: "Register",
     switchToLogin: "Login",
 
     loginEmail: "Email",
     loginPassword: "Password",
-    loginBtn: "Login",  // added
+    loginBtn: "Login", // added
 
     fullName: "Full Name",
     registerEmail: "Email",
     registerPassword: "Password",
     confirmPassword: "Confirm Password",
     phoneNumber: "Phone Number",
-    registerBtn: "Register",  // added
+    registerBtn: "Register", // added
     back: "← Back",
   },
 
@@ -37,8 +39,10 @@ const translations = {
     registerTitle: "Inscription",
     welcomeLoginTitle: "Bienvenue !",
     welcomeRegisterTitle: "Bonjour lecteur !",
-    welcomeLoginText: "Connectez-vous pour accéder à votre compte bibliothèque.",
-    welcomeRegisterText: "Inscrivez-vous maintenant pour créer votre compte et explorer la bibliothèque.",
+    welcomeLoginText:
+      "Connectez-vous pour accéder à votre compte bibliothèque.",
+    welcomeRegisterText:
+      "Inscrivez-vous maintenant pour créer votre compte et explorer la bibliothèque.",
     switchToRegister: "S'inscrire",
     switchToLogin: "Connexion",
 
@@ -115,7 +119,7 @@ const loginToggle = document.getElementById("loginToggle");
 const regPassword = document.getElementById("regPassword");
 const regToggle = document.getElementById("regToggle");
 
-const regConfirmPassword = document.getElementById("regConfirmPassword");
+const regConfirmPassword = document.getElementById("confirmPassword");
 const confirmToggle = document.getElementById("confirmToggle");
 
 loginToggle.addEventListener("click", () => {
@@ -127,7 +131,8 @@ regToggle.addEventListener("click", () => {
 });
 
 confirmToggle.addEventListener("click", () => {
-  regConfirmPassword.type = regConfirmPassword.type === "password" ? "text" : "password";
+  regConfirmPassword.type =
+    regConfirmPassword.type === "password" ? "text" : "password";
 });
 
 // ----------- Language Function -----------
@@ -188,3 +193,61 @@ document.getElementById("langSelect").addEventListener("change", (e) => {
 
 // Initialize
 setLanguage("en");
+
+// ================= AUTHENTICATION =================
+
+// Inputs
+const loginEmailInput = document.getElementById("loginEmail");
+const loginPasswordInput = document.getElementById("loginPassword");
+
+const fullNameInput = document.getElementById("fullName");
+const registerEmailInput = document.getElementById("registerEmail");
+const phoneInput = document.getElementById("phoneNumber");
+
+// ---------- REGISTER ----------
+registerForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  if (regPassword.value !== regConfirmPassword.value) {
+    alert("Passwords do not match");
+    return;
+  }
+
+  const user = {
+    name: fullNameInput.value,
+    email: registerEmailInput.value,
+    password: regPassword.value,
+    phone: phoneInput.value,
+  };
+
+  localStorage.setItem("libraryUser", JSON.stringify(user));
+
+  alert("Account created successfully!");
+
+  // Switch to login after register
+  switchForms();
+});
+
+// ---------- LOGIN ----------
+loginForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  const savedUser = JSON.parse(localStorage.getItem("libraryUser"));
+
+  if (!savedUser) {
+    alert("No account found. Please register first.");
+    return;
+  }
+
+  if (
+    loginEmailInput.value === savedUser.email &&
+    loginPasswordInput.value === savedUser.password
+  ) {
+    localStorage.setItem("isLoggedIn", "true");
+    localStorage.setItem("currentUser", JSON.stringify(savedUser)); // ⭐ NEW
+
+    window.location.href = "landing.html";
+  } else {
+    alert("Invalid email or password");
+  }
+});
