@@ -213,18 +213,32 @@ registerForm.addEventListener("submit", (e) => {
     return;
   }
 
+  // Get existing users array or empty
+  let users = JSON.parse(localStorage.getItem("libraryUsers")) || [];
+
+  // Check if email already exists
+  const emailExists = users.some((u) => u.email === registerEmailInput.value);
+  if (emailExists) {
+    alert("Email already registered");
+    return;
+  }
+
   const user = {
     name: fullNameInput.value,
     email: registerEmailInput.value,
     password: regPassword.value,
     phone: phoneInput.value,
+    role: "User",
+    createdAt: new Date().toISOString(),
   };
 
-  localStorage.setItem("libraryUser", JSON.stringify(user));
+  users.push(user);
+
+  // Save updated users array
+  localStorage.setItem("libraryUsers", JSON.stringify(users));
 
   alert("Account created successfully!");
 
-  // Switch to login after register
   switchForms();
 });
 
@@ -232,22 +246,21 @@ registerForm.addEventListener("submit", (e) => {
 loginForm.addEventListener("submit", (e) => {
   e.preventDefault();
 
-  const savedUser = JSON.parse(localStorage.getItem("libraryUser"));
+  const users = JSON.parse(localStorage.getItem("libraryUsers")) || [];
 
-  if (!savedUser) {
-    alert("No account found. Please register first.");
+  const user = users.find(
+    (u) =>
+      u.email === loginEmailInput.value &&
+      u.password === loginPasswordInput.value
+  );
+
+  if (!user) {
+    alert("Invalid email or password");
     return;
   }
 
-  if (
-    loginEmailInput.value === savedUser.email &&
-    loginPasswordInput.value === savedUser.password
-  ) {
-    localStorage.setItem("isLoggedIn", "true");
-    localStorage.setItem("currentUser", JSON.stringify(savedUser)); // ⭐ NEW
+  localStorage.setItem("isLoggedIn", "true");
+  localStorage.setItem("currentUser", JSON.stringify(user));
 
-    window.location.href = "landing.html";
-  } else {
-    alert("Invalid email or password");
-  }
+  window.location.href = "landing.html";
 });

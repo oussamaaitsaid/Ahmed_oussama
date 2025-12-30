@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BookVerse Admin Dashboard</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="css/dashboard.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style></style>
+  </head>
+  <body>
+    <div class="sidebar">
+      <h2>BookVerse</h2>
+      <a href="#"><i class="fa fa-chart-line"></i> Dashboard</a>
+      <a href="#"><i class="fa fa-users"></i> Users</a>
+      <a href="#"><i class="fa fa-book"></i> Books</a>
+      <a href="#"><i class="fa fa-layer-group"></i> Categories</a>
+      <a href="#"><i class="fa fa-envelope"></i> Feedback</a>
+    </div>
+
+    <div class="main">
+      <div class="header">
+        <h1>Admin Dashboard</h1>
+        <span>Welcome, Admin</span>
+      </div>
+
+      <div class="stats">
+        <div class="stat-card">
+          <h3>Total Users</h3>
+          <p id="totalUsers">0</p>
+        </div>
+
+        <div class="stat-card">
+          <h3>Total Books</h3>
+          <p id="totalBooks">0</p>
+        </div>
+
+        <div class="stat-card">
+          <h3>Categories</h3>
+          <p id="totalCategories">0</p>
+        </div>
+
+        <div class="stat-card">
+          <h3>Feedbacks</h3>
+          <p id="totalFeedbacks">0</p>
+        </div>
+      </div>
+
+      <div class="charts">
+        <div class="chart-box"><canvas id="booksChart"></canvas></div>
+        <div class="chart-box"><canvas id="usersChart"></canvas></div>
+      </div>
+
+      <div class="table-box">
+        <h3>Users Management</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Role</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+
+          <tbody id="usersTableBody">
+            <!-- REAL USERS WILL BE INSERTED HERE -->
+          </tbody>
+        </table>
+      </div>
+
+      <div class="table-box">
+        <h3>Books Management</h3>
+        <table>
+          <tr>
+            <th>Title</th>
+            <th>Category</th>
+            <th>Price</th>
+            <th>Actions</th>
+          </tr>
+          <tr>
+            <td>The Alchemist</td>
+            <td>Philosophy</td>
+            <td>$12</td>
+            <td class="actions">
+              <button class="edit">Edit</button>
+              <button class="delete">Delete</button>
+            </td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="feedback">
+        <h3>User Feedback</h3>
+        <p><strong>Alice:</strong> Love the library design!</p>
+        <p><strong>Mark:</strong> Please add more science books.</p>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+      const booksChart = new Chart(document.getElementById("booksChart"), {
+        type: "bar",
+        data: {
+          labels: [
+            "Philosophy",
+            "Psychology",
+            "Fantasy",
+            "Fiction",
+            "Science",
+            "Technology",
+            "History",
+            "Art",
+            "Business",
+            "Mystery",
+            "Romance",
+            "Thriller",
+            "Adventure",
+            "Self Help",
+            "Poetry",
+            "Biography",
+          ],
+          datasets: [
+            {
+              label: "Books per Category",
+              data: [
+                120, 95, 210, 180, 160, 140, 110, 90, 130, 100, 150, 85, 105,
+                98, 70, 65,
+              ],
+              backgroundColor: "#ffb400",
+              borderRadius: 6,
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            legend: { display: false },
+          },
+          scales: {
+            y: {
+              beginAtZero: true,
+              ticks: { stepSize: 50 },
+            },
+          },
+        },
+      });
+    </script>
+
+    <script>
+      const usersChart = new Chart(document.getElementById("usersChart"), {
+        type: "doughnut",
+        data: {
+          labels: ["Readers", "Admins"],
+          datasets: [
+            {
+              data: [320, 5],
+              backgroundColor: ["#ffb400", "#2c2c2c"],
+              borderWidth: 0,
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            legend: {
+              position: "bottom",
+            },
+          },
+        },
+      });
+    </script>
+    <script src="js/dashboard.js"></script>
+  </body>
+</html>
