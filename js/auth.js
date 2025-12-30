@@ -246,12 +246,28 @@ registerForm.addEventListener("submit", (e) => {
 loginForm.addEventListener("submit", (e) => {
   e.preventDefault();
 
-  const users = JSON.parse(localStorage.getItem("libraryUsers")) || [];
+  const emailInput = loginEmailInput.value;
+  const passwordInput = loginPasswordInput.value;
 
+  // Admin credentials (hardcoded)
+  const adminEmail = "admin@gmail.com";
+  const adminPassword = "admin123";
+
+  if (emailInput === adminEmail && passwordInput === adminPassword) {
+    // Admin login
+    localStorage.setItem("isLoggedIn", "true");
+    localStorage.setItem(
+      "currentUser",
+      JSON.stringify({ name: "Admin", email: adminEmail, role: "Admin" })
+    );
+    window.location.href = "dashboard.html"; // redirect to admin dashboard
+    return;
+  }
+
+  // Normal users
+  const users = JSON.parse(localStorage.getItem("libraryUsers")) || [];
   const user = users.find(
-    (u) =>
-      u.email === loginEmailInput.value &&
-      u.password === loginPasswordInput.value
+    (u) => u.email === emailInput && u.password === passwordInput
   );
 
   if (!user) {

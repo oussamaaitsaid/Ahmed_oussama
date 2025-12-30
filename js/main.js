@@ -110,7 +110,6 @@ function showNextFeedback() {
 // Auto slide every 4 seconds
 setInterval(showNextFeedback, 4000);
 
-
 // Smooth scroll to top on click
 backToTopBtn.addEventListener("click", () => {
   window.scrollTo({
@@ -484,3 +483,65 @@ protectedButtons.forEach((btn) => {
     }
   });
 });
+
+function updateSidebar() {
+  const sidebarSignIn = document.getElementById("signinLink"); // the sidebar link
+  const isLoggedIn = localStorage.getItem("isLoggedIn");
+  const user = JSON.parse(localStorage.getItem("currentUser"));
+
+  if (!sidebarSignIn) return; // safety check
+
+  if (isLoggedIn === "true" && user) {
+    sidebarSignIn.textContent = "Logout";
+    sidebarSignIn.href = "#"; // prevent default link
+    sidebarSignIn.onclick = (e) => {
+      e.preventDefault();
+      logoutSidebar();
+    };
+  } else {
+    sidebarSignIn.textContent = "Sign-in / up";
+    sidebarSignIn.href = "auth.html";
+    sidebarSignIn.onclick = null; // remove previous logout handler
+  }
+}
+
+function logoutSidebar() {
+  localStorage.removeItem("isLoggedIn");
+  localStorage.removeItem("currentUser");
+  updateSidebar();
+  window.location.href = "auth.html";
+}
+
+// Run on page load
+document.addEventListener("DOMContentLoaded", updateSidebar);
+
+// header.js (new file or include in all pages)
+function updateHeader() {
+  const headerLogin = document.getElementById("headerLogin");
+  const logoutLink = document.getElementById("logoutLink");
+  const userNameSpan = document.getElementById("userName");
+
+  const isLoggedIn = localStorage.getItem("isLoggedIn");
+  const user = JSON.parse(localStorage.getItem("currentUser"));
+
+  if (isLoggedIn === "true" && user) {
+    headerLogin.style.display = "none";
+    logoutLink.style.display = "inline-block";
+    userNameSpan.style.display = "inline-block";
+    userNameSpan.textContent = "Hi, " + user.name;
+  } else {
+    headerLogin.style.display = "inline-block";
+    logoutLink.style.display = "none";
+    userNameSpan.style.display = "none";
+  }
+}
+
+function logout() {
+  localStorage.removeItem("isLoggedIn");
+  localStorage.removeItem("currentUser");
+  updateHeader();
+  window.location.href = "auth.html";
+}
+
+// Call it on page load
+document.addEventListener("DOMContentLoaded", updateHeader);

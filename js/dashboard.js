@@ -1,3 +1,14 @@
+// Protect dashboard: only admin can access
+document.addEventListener("DOMContentLoaded", () => {
+  // Protect dashboard: only admin can access
+  const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+
+  if (!currentUser || currentUser.role !== "Admin") {
+    // Immediate redirect without showing any part of the page
+    window.location.href = "landing.html";
+  }
+});
+
 function updateDashboardStats() {
   // USERS (array)
   const users = JSON.parse(localStorage.getItem("libraryUsers")) || [];
@@ -98,3 +109,105 @@ function deleteUser(index) {
     updateHeader(); // update header dynamically
   }
 }
+
+function updateHeaderAndSidebar() {
+  const headerLogin = document.getElementById("headerLogin");
+  const logoutLink = document.getElementById("logoutLink");
+  const userNameSpan = document.getElementById("userName");
+  const sidebarSignin = document.getElementById("signinLink");
+  const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+
+  if (currentUser) {
+    headerLogin.style.display = "none";
+    logoutLink.style.display = "inline-block";
+    userNameSpan.style.display = "inline-block";
+    userNameSpan.textContent = "Hi, " + currentUser.name;
+
+    if (sidebarSignin) sidebarSignin.style.display = "none";
+  } else {
+    headerLogin.style.display = "inline-block";
+    logoutLink.style.display = "none";
+    userNameSpan.style.display = "none";
+
+    if (sidebarSignin) sidebarSignin.style.display = "inline-block";
+  }
+}
+
+document.addEventListener("DOMContentLoaded", updateHeaderAndSidebar);
+
+function logout() {
+  localStorage.removeItem("isLoggedIn");
+  localStorage.removeItem("currentUser");
+  updateHeaderAndSidebar();
+  window.location.href = "auth.html";
+}
+
+// ========================= charts =============================
+const booksChart = new Chart(document.getElementById("booksChart"), {
+  type: "bar",
+  data: {
+    labels: [
+      "Philosophy",
+      "Psychology",
+      "Fantasy",
+      "Fiction",
+      "Science",
+      "Technology",
+      "History",
+      "Art",
+      "Business",
+      "Mystery",
+      "Romance",
+      "Thriller",
+      "Adventure",
+      "Self Help",
+      "Poetry",
+      "Biography",
+    ],
+    datasets: [
+      {
+        label: "Books per Category",
+        data: [
+          120, 95, 210, 180, 160, 140, 110, 90, 130, 100, 150, 85, 105, 98, 70,
+          65,
+        ],
+        backgroundColor: "#ffb400",
+        borderRadius: 6,
+      },
+    ],
+  },
+  options: {
+    responsive: true,
+    plugins: {
+      legend: { display: false },
+    },
+    scales: {
+      y: {
+        beginAtZero: true,
+        ticks: { stepSize: 50 },
+      },
+    },
+  },
+});
+
+const usersChart = new Chart(document.getElementById("usersChart"), {
+  type: "doughnut",
+  data: {
+    labels: ["Readers", "Admins"],
+    datasets: [
+      {
+        data: [320, 5],
+        backgroundColor: ["#ffb400", "#2c2c2c"],
+        borderWidth: 0,
+      },
+    ],
+  },
+  options: {
+    responsive: true,
+    plugins: {
+      legend: {
+        position: "bottom",
+      },
+    },
+  },
+});
