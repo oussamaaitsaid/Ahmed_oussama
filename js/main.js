@@ -470,7 +470,6 @@ protectedButtons.forEach((btn) => {
     const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
 
     if (!isLoggedIn) {
-      alert("Please log in first to access this page.");
       window.location.href = "auth.html"; // redirect to login/register
       return;
     }
@@ -528,7 +527,7 @@ function updateHeader() {
     headerLogin.style.display = "none";
     logoutLink.style.display = "inline-block";
     userNameSpan.style.display = "inline-block";
-    userNameSpan.textContent = "Hi, " + user.name;
+    userNameSpan.textContent = user.name;
   } else {
     headerLogin.style.display = "inline-block";
     logoutLink.style.display = "none";
@@ -545,3 +544,4 @@ function logout() {
 
 // Call it on page load
 document.addEventListener("DOMContentLoaded", updateHeader);
+

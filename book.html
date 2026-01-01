@@ -12,37 +12,35 @@
     />
   </head>
   <button id="backToTop" title="Back to Top">↑</button>
-  
-  <body>
 
+  <body>
     <script>
       if (localStorage.getItem("isLoggedIn") !== "true") {
         window.location.href = "auth.html";
       }
     </script>
 
-
-  
     <!-- ===== SIDEBAR ===== -->
     <div id="sidebar" class="sidebar">
       <a href="#" class="close-btn" onclick="toggleSidebar()">&times;</a>
 
-      <h2>BookVerse</h2>
+      <h2 id="sidebarTitle">BookVerse</h2>
 
       <ul id="navLinks">
-        <li><a href="landing.html" class="active">Home</a></li>
-        <li><a href="landing.html">About</a></li>
-        <li><a href="landing.html">Facts</a></li>
-        <li><a href="landing.html">Contact</a></li>
+        <li><a id="navHome" href="landing.html" class="active">Home</a></li>
+        <li><a id="navAbout" href="landing.html">About</a></li>
+        <li><a id="navFacts" href="landing.html">Facts</a></li>
+        <li><a id="navContact" href="landing.html">Contact</a></li>
 
         <!-- Dropdown Menu -->
         <li class="dropdown">
-          <a href="#" class="dropdown-btn">More ▼</a>
+          <a id="dropdownMore" href="#" class="dropdown-btn">More ▼</a>
           <ul class="dropdown-menu">
-            <li><a href="categorie.html">Categories</a></li>
-            <li><a href="book.html">Books</a></li>
+            <li><a id="categories" href="categorie.html">Categories</a></li>
+            <li><a id="booksNav" href="book.html">Books</a></li>
           </ul>
         </li>
+
         <div class="social-icons">
           <a
             href="https://facebook.com"
@@ -74,13 +72,12 @@
           </a>
         </div>
 
-       <a href="auth.html" class="signin-link" id="signinLink">sign-in/up</a>
-
+        <a id="signinLink" href="auth.html" class="signin-link">sign-in/up</a>
       </ul>
     </div>
 
     <!-- ===== HEADER ===== -->
-       <header>
+    <header>
       <div class="container flex items-center justify-between relative p-4">
         <span class="menu-btn" onclick="toggleSidebar()">&#9776;</span>
         <h1 id="headerTitle">BookVerse</h1>
@@ -101,7 +98,14 @@
           >Logout</a
         >
 
-      
+        <div class="absolute top-4 right-4">
+          <label for="langSelect" class="sr-only">Select Language</label>
+          <select id="langSelect" class="border px-3 py-2 rounded-lg">
+            <option value="en">English</option>
+            <option value="fr">Français</option>
+            <option value="ar">العربية</option>
+          </select>
+        </div>
       </div>
     </header>
 
@@ -117,438 +121,483 @@
       </div>
 
       <div class="container">
-        <h2>Our Collection</h2>
+        <h2 id="booksTitle">Our Collection</h2>
 
         <!-- Books Grid -->
         <div id="books-container" class="books-container">
           <!-- Page 1 -->
-      <div class="books-page" data-page="1">
-        <!-- Book 1 -->
-        <div class="book-card">
-          <img src="images/book1.jpg" alt="To Kill a Mockingbird" />
-          <h3>To Kill a Mockingbird</h3>
-          <h4>Fiction</h4>
-          <p>A powerful story about justice and racism.</p>
-          <p class="price">$10</p>
-          <button class="reserve-btn">Reserve</button>
-        </div>
+          <div class="books-page" data-page="1">
+            <!-- Book 1 -->
+            <div class="book-card1">
+              <img src="images/book1.jpg" alt="To Kill a Mockingbird" />
+              <h3 id="b1Title">To Kill a Mockingbird</h3>
+              <h4 id="b1Genre">Fiction</h4>
+              <p id="b1Desc">A powerful story about justice and racism.</p>
+              <p class="price">$10</p>
+              <button id="b1Btn" class="reserve-btn">Reserve</button>
+            </div>
 
-        <!-- Book 2 -->
-        <div class="book-card">
-          <img src="images/book3.jpg" alt="The Great Gatsby" />
-          <h3>The Great Gatsby</h3>
-          <h4>Romance</h4>
-          <p>A tragic tale of wealth and lost love.</p>
-          <p class="price">$15</p>
-          <button class="reserve-btn">Reserve</button>
-        </div>
-
-        <!-- Book 3 -->
-        <div class="book-card">
-          <img src="images/book4.jpg" alt="The Alchemist" />
-          <h3>The Alchemist</h3>
-          <h4>Philosophy</h4>
-          <p>A journey about dreams and destiny.</p>
-          <p class="price">$20</p>
-          <button class="reserve-btn">Reserve</button>
-        </div>
-
-        <!-- Book 4 -->
-        <div class="book-card">
-          <img src="images/book5.jpg" alt="Pride and Prejudice" />
-          <h3>Pride and Prejudice</h3>
-          <h4>Romance</h4>
-          <p>A classic romance about love and society.</p>
-          <p class="price">$25</p>
-          <button class="reserve-btn">Reserve</button>
-        </div>
-
-        <!-- Book 5 -->
-        <div class="book-card">
-          <img src="images/book6.png" alt="Sapiens" />
-          <h3>Sapiens</h3>
-          <h4>History</h4>
-          <p>A brief history of humankind.</p>
-          <p class="price">$10</p>
-          <button class="reserve-btn">Reserve</button>
-        </div>
-
-        <!-- Book 6 -->
-        <div class="book-card">
-          <img src="images/book7.jpg" alt="Atomic Habits" />
-          <h3>Atomic Habits</h3>
-          <h4>Self help</h4>
-          <p>Small habits that create big change.</p>
-          <p class="price">$15</p>
-          <button class="reserve-btn">Reserve</button>
-        </div>
-
-        <!-- Book 7 -->
-        <div class="book-card">
-          <img src="images/book8.jpg" alt="Educated" />
-          <h3>Educated</h3>
-          <h4>Psychology</h4>
-          <p>A memoir about learning and freedom.</p>
-          <p class="price">$20</p>
-          <button class="reserve-btn">Reserve</button>
-        </div>
-
-        <!-- Book 8 -->
-        <div class="book-card">
-          <img src="images/book9.jpg" alt="Becoming" />
-          <h3>Becoming</h3>
-          <h4>Politics</h4>
-          <p>The inspiring life story of Michelle Obama.</p>
-          <p class="price">$25</p>
-          <button class="reserve-btn">Reserve</button>
-        </div>
-
-        <!-- Book 9 -->
-        <div class="book-card">
-          <img src="images/book10.jpg" alt="The Power of Now" />
-          <h3>The Power of Now</h3>
-          <h4>Philosophy</h4>
-          <p>A guide to living in the present.</p>
-          <p class="price">$10</p>
-          <button class="reserve-btn">Reserve</button>
-        </div>
-
-        <!-- Book 10 -->
-        <div class="book-card">
-          <img src="images/book11.jpg" alt="Harry Potter" />
-          <h3>Harry Potter</h3>
-          <h4>Fantasy</h4>
-          <p>A magical adventure at a wizard school.</p>
-          <p class="price">$15</p>
-          <button class="reserve-btn">Reserve</button>
-        </div>
-      </div>
-
-      <!-- Page 2 -->
-      <div class="books-page" data-page="2">
-        <!-- Book 11 -->
-        <div class="book-card">
-          <img src="images/book12.jpg" alt="A Song of Ice and Fire" />
-          <h3>A Song of Ice and Fire</h3>
-          <h4>Fantasy</h4>
-          <p>An epic fantasy of power and betrayal.</p>
-          <p class="price">$10</p>
-          <button class="reserve-btn">Reserve</button>
-        </div>
-
-        <!-- Book 12 -->
-        <div class="book-card">
-          <img src="images/book13.jpg" alt="The 7 Habits of Highly Effective People" />
-          <h3>The 7 Habits of Highly Effective People</h3>
-          <h4>Self help</h4>
-          <p>Principles for personal and professional success.</p>
-          <p class="price">$15</p>
-          <button class="reserve-btn">Reserve</button>
-        </div>
-
-        <!-- Book 13 -->
-        <div class="book-card">
-          <img src="images/book14.png" alt="How to Win Friends & Influence People" />
-          <h3>How to Win Friends & Influence People</h3>
-          <h4>Self help</h4>
-          <p>Timeless lessons on communication and influence.</p>
-          <p class="price">$20</p>
-          <button class="reserve-btn">Reserve</button>
-        </div>
-
-        <!-- Book 14 -->
-        <div class="book-card">
-          <img src="images/book15.jpg" alt="Think and Grow Rich" />
-          <h3>Think and Grow Rich</h3>
-          <h4>Business</h4>
-          <p>A classic guide to success and wealth.</p>
-          <p class="price">$25</p>
-          <button class="reserve-btn">Reserve</button>
-        </div>
-
-        <!-- Book 15 -->
-        <div class="book-card">
-          <img src="images/book16.jpg" alt="The Girl with the Dragon Tattoo" />
-          <h3>The Girl with the Dragon Tattoo</h3>
-          <h4>Mystery</h4>
-          <p>A dark thriller full of mystery.</p>
-          <p class="price">$10</p>
-          <button class="reserve-btn">Reserve</button>
-        </div>
-
-        <!-- Book 16 -->
-        <div class="book-card">
-          <img src="images/book17.jpg" alt="The Da Vinci Code" />
-          <h3>The Da Vinci Code</h3>
-          <h4>Mystery</h4>
-          <p>A fast-paced mystery and conspiracy.</p>
-          <p class="price">$15</p>
-          <button class="reserve-btn">Reserve</button>
-        </div>
-
-        <!-- Book 17 -->
-        <div class="book-card">
-          <img src="images/book18.jpg" alt="In the Woods" />
-          <h3>In the Woods</h3>
-          <h4>Thriller</h4>
-          <p>A detective hunts a killer trapped in a frozen town.</p>
-          <p class="price">$20</p>
-          <button class="reserve-btn">Reserve</button>
-        </div>
-
-        <!-- Book 18 -->
-        <div class="book-card">
-          <img src="images/book19.jpeg" alt="Dune" />
-          <h3>Dune</h3>
-          <h4>Science</h4>
-          <p>A legendary science fiction masterpiece.</p>
-          <p class="price">$25</p>
-          <button class="reserve-btn">Reserve</button>
-        </div>
-
-        <!-- Book 19 -->
-        <div class="book-card">
-          <img src="images/book20.jpeg" alt="The Hitchhiker's Guide to the Galaxy" />
-          <h3>The Hitchhiker's Guide to the Galaxy</h3>
-          <h4>Science</h4>
-          <p>A hilarious sci-fi adventure.</p>
-          <p class="price">$10</p>
-          <button class="reserve-btn">Reserve</button>
-        </div>
-
-        <!-- Book 20 -->
-        <div class="book-card">
-          <img src="images/book21.jpeg" alt="You Are a Badass" />
-          <h3>You Are a Badass</h3>
-          <h4>Self help</h4>
-          <p>A motivational guide to confidence.</p>
-          <p class="price">$15</p>
-          <button class="reserve-btn">Reserve</button>
-        </div>
-      </div>
-
-      <!-- Page 3 -->
-      <div class="books-page" data-page="3">
-        <!-- Book 21 -->
-        <div class="book-card">
-          <img src="images/book22.jpeg" alt="The Subtle Art of Not Giving a F*ck" />
-          <h3>The Subtle Art of Not Giving a F*ck</h3>
-          <h4>Self help</h4>
-          <p>A counterintuitive approach to living a good life.</p>
-          <p class="price">$10</p>
-          <button class="reserve-btn">Reserve</button>
-        </div>
-
-        <!-- Book 22 -->
-        <div class="book-card">
-          <img src="images/book.50.jpg" alt="The Hobbit: The Desolation of Smaug" />
-          <h3>The Hobbit: The Desolation of Smaug</h3>
-          <h4>Fantasy</h4>
-          <p>An epic fantasy adventure in Middle-earth.</p>
-          <p class="price">$15</p>
-          <button class="reserve-btn">Reserve</button>
-        </div>
-
-        <!-- Book 23 -->
-        <div class="book-card">
-          <img src="images/book23.jpeg" alt="Gone Girl" />
-          <h3>Gone Girl</h3>
-          <h4>Thriller</h4>
-          <p>A dark psychological thriller full of twists.</p>
-          <p class="price">$20</p>
-          <button class="reserve-btn">Reserve</button>
-        </div>
-
-        <!-- Book 24 -->
-        <div class="book-card">
-          <img src="images/book24.jpeg" alt="Big Little Lies" />
-          <h3>Big Little Lies</h3>
-          <h4>Thriller</h4>
-          <p>A gripping story of secrets and relationships.</p>
-          <p class="price">$25</p>
-          <button class="reserve-btn">Reserve</button>
-        </div>
-
-        <!-- Book 25 -->
-        <div class="book-card">
-          <img src="images/book25.jpeg" alt="The Lord of the Rings" />
-          <h3>The Lord of the Rings</h3>
-          <h4>Fantasy</h4>
-          <p>A legendary fantasy saga of good versus evil.</p>
-          <p class="price">$10</p>
-          <button class="reserve-btn">Reserve</button>
-        </div>
-
-        <!-- Book 26 -->
-      <div class="book-card">
-        <img src="images/upbook1.jpg" alt="The Third Policeman" />
-        <h3>The Third Policeman</h3>
-        <h4>Philosophy</h4>
-        <p>A surreal and darkly humorous novel.</p>
-        <p class="price">$15</p>
-        <button class="reserve-btn">Reserve</button>
-      </div>
-
-      <!-- Book 27 -->
-      <div class="book-card">
-        <img src="images/upbook2.jpg" alt="Codex Seraphinianus" />
-        <h3>Codex Seraphinianus</h3>
-        <h4>Art design</h4>
-        <p>An enigmatic and illustrated fictional encyclopedia.</p>
-        <p class="price">$20</p>
-        <button class="reserve-btn">Reserve</button>
-      </div>
-
-      <!-- Book 28 -->
-      <div class="book-card">
-        <img src="images/upbook3.jpg" alt="A Kiss Before Dying" />
-        <h3>A Kiss Before Dying</h3>
-        <h4>Mystery</h4>
-        <p>A classic psychological crime novel.</p>
-        <p class="price">$25</p>
-        <button class="reserve-btn">Reserve</button>
-      </div>
-
-      <!-- Book 29 -->
-      <div class="book-card">
-        <img src="images/upbook4.jpg" alt="The Art of Learning" />
-        <h3>The Art of Learning</h3>
-        <h4>Self help</h4>
-        <p>Mastering performance and lifelong learning.</p>
-        <p class="price">$10</p>
-        <button class="reserve-btn">Reserve</button>
-      </div>
-
-      <!-- Book 30 -->
-      <div class="book-card">
-        <img src="images/upbook5.jpg" alt="The Dying Earth" />
-        <h3>The Dying Earth</h3>
-        <h4>Fantasy</h4>
-        <p>A classic collection of fantasy stories.</p>
-        <p class="price">$15</p>
-        <button class="reserve-btn">Reserve</button>
-      </div>
-      </div>
-
-
-        <!-- Page 4 -->
-      <div class="books-page" data-page="4">
-          <!-- Book 31 to 40 -->
-        <!-- Book 31 -->
-        <div class="book-card">
-          <img src="images/1736773411-book2.jpg" alt="1984" />
-          <h3>1984</h3>
-          <h4>Politics</h4>
-          <p>A dystopian novel about totalitarianism and surveillance.</p>
-          <p class="price">$10</p>
-          <button class="reserve-btn">Reserve</button>
-        </div>
-
-
-                    <!-- Book 32 -->
-            <div class="book-card">
-              <img src="images/book100.jpg" alt="Emily Wilde's Compendium of Lost Tales" />
-              <h3>Emily Wilde's Compendium of Lost Tales</h3>
-              <h4>Fairy tail</h4>
-              <p>A magical collection of forgotten stories and adventures.</p>
+            <!-- Book 2 -->
+            <div class="book-card1">
+              <img src="images/book3.jpg" alt="The Great Gatsby" />
+              <h3 id="b2Title">The Great Gatsby</h3>
+              <h4 id="b2Genre">Romance</h4>
+              <p id="b2Desc">A tragic tale of wealth and lost love.</p>
               <p class="price">$15</p>
-              <button class="reserve-btn">Reserve</button>
+              <button id="b2Btn" class="reserve-btn">Reserve</button>
+            </div>
+
+            <!-- Book 3 -->
+            <div class="book-card1">
+              <img src="images/book4.jpg" alt="The Alchemist" />
+              <h3 id="b3Title">The Alchemist</h3>
+              <h4 id="b3Genre">Philosophy</h4>
+              <p id="b3Desc">A journey about dreams and destiny.</p>
+              <p class="price">$20</p>
+              <button id="b3Btn" class="reserve-btn">Reserve</button>
+            </div>
+
+            <!-- Book 4 -->
+            <div class="book-card1">
+              <img src="images/book5.jpg" alt="Pride and Prejudice" />
+              <h3 id="b4Title">Pride and Prejudice</h3>
+              <h4 id="b4Genre">Romance</h4>
+              <p id="b4Desc">A classic romance about love and society.</p>
+              <p class="price">$25</p>
+              <button id="b4Btn" class="reserve-btn">Reserve</button>
+            </div>
+
+            <!-- Book 5 -->
+            <div class="book-card1">
+              <img src="images/book6.png" alt="Sapiens" />
+              <h3 id="b5Title">Sapiens</h3>
+              <h4 id="b5Genre">History</h4>
+              <p id="b5Desc">A brief history of humankind.</p>
+              <p class="price">$10</p>
+              <button id="b5Btn" class="reserve-btn">Reserve</button>
+            </div>
+
+            <!-- Book 6 -->
+            <div class="book-card1">
+              <img src="images/book7.jpg" alt="Atomic Habits" />
+              <h3 id="b6Title">Atomic Habits</h3>
+              <h4 id="b6Genre">Self help</h4>
+              <p id="b6Desc">Small habits that create big change.</p>
+              <p class="price">$15</p>
+              <button id="b6Btn" class="reserve-btn">Reserve</button>
+            </div>
+
+            <!-- Book 7 -->
+            <div class="book-card1">
+              <img src="images/book8.jpg" alt="Educated" />
+              <h3 id="b7Title">Educated</h3>
+              <h4 id="b7Genre">Psychology</h4>
+              <p id="b7Desc">A memoir about learning and freedom.</p>
+              <p class="price">$20</p>
+              <button id="b7Btn" class="reserve-btn">Reserve</button>
+            </div>
+
+            <!-- Book 8 -->
+            <div class="book-card1">
+              <img src="images/book9.jpg" alt="Becoming" />
+              <h3 id="b8Title">Becoming</h3>
+              <h4 id="b8Genre">Politics</h4>
+              <p id="b8Desc">The inspiring life story of Michelle Obama.</p>
+              <p class="price">$25</p>
+              <button id="b8Btn" class="reserve-btn">Reserve</button>
+            </div>
+
+            <!-- Book 9 -->
+            <div class="book-card1">
+              <img src="images/book10.jpg" alt="The Power of Now" />
+              <h3 id="b9Title">The Power of Now</h3>
+              <h4 id="b9Genre">Philosophy</h4>
+              <p id="b9Desc">A guide to living in the present.</p>
+              <p class="price">$10</p>
+              <button id="b9Btn" class="reserve-btn">Reserve</button>
+            </div>
+
+            <!-- Book 10 -->
+            <div class="book-card1">
+              <img src="images/book11.jpg" alt="Harry Potter" />
+              <h3 id="b10Title">Harry Potter</h3>
+              <h4 id="b10Genre">Fantasy</h4>
+              <p id="b10Desc">A magical adventure at a wizard school.</p>
+              <p class="price">$15</p>
+              <button id="b10Btn" class="reserve-btn">Reserve</button>
+            </div>
+          </div>
+
+          <!-- Page 2 -->
+          <div class="books-page" data-page="2">
+            <!-- Book 11 -->
+            <div class="book-card1">
+              <img src="images/book12.jpg" alt="A Song of Ice and Fire" />
+              <h3 id="b11Title">A Song of Ice and Fire</h3>
+              <h4 id="b11Genre">Fantasy</h4>
+              <p id="b11Desc">An epic fantasy of power and betrayal.</p>
+              <p class="price">$10</p>
+              <button id="b11Btn" class="reserve-btn">Reserve</button>
+            </div>
+
+            <!-- Book 12 -->
+            <div class="book-card1">
+              <img
+                src="images/book13.jpg"
+                alt="The 7 Habits of Highly Effective People"
+              />
+              <h3 id="b12Title">The 7 Habits of Highly Effective People</h3>
+              <h4 id="b12Genre">Self help</h4>
+              <p id="b12Desc">
+                Principles for personal and professional success.
+              </p>
+              <p class="price">$15</p>
+              <button id="b12Btn" class="reserve-btn">Reserve</button>
+            </div>
+
+            <!-- Book 13 -->
+            <div class="book-card1">
+              <img
+                src="images/book14.png"
+                alt="How to Win Friends & Influence People"
+              />
+              <h3 id="b13Title">How to Win Friends & Influence People</h3>
+              <h4 id="b13Genre">Self help</h4>
+              <p id="b13Desc">
+                Timeless lessons on communication and influence.
+              </p>
+              <p class="price">$20</p>
+              <button id="b13Btn" class="reserve-btn">Reserve</button>
+            </div>
+
+            <!-- Book 14 -->
+            <div class="book-card1">
+              <img src="images/book15.jpg" alt="Think and Grow Rich" />
+              <h3 id="b14Title">Think and Grow Rich</h3>
+              <h4 id="b14Genre">Business</h4>
+              <p id="b14Desc">A classic guide to success and wealth.</p>
+              <p class="price">$25</p>
+              <button id="b14Btn" class="reserve-btn">Reserve</button>
+            </div>
+
+            <!-- Book 15 -->
+            <div class="book-card1">
+              <img
+                src="images/book16.jpg"
+                alt="The Girl with the Dragon Tattoo"
+              />
+              <h3 id="b15Title">The Girl with the Dragon Tattoo</h3>
+              <h4 id="b15Genre">Mystery</h4>
+              <p id="b15Desc">A dark thriller full of mystery.</p>
+              <p class="price">$10</p>
+              <button id="b15Btn" class="reserve-btn">Reserve</button>
+            </div>
+
+            <!-- Book 16 -->
+            <div class="book-card1">
+              <img src="images/book17.jpg" alt="The Da Vinci Code" />
+              <h3 id="b16Title">The Da Vinci Code</h3>
+              <h4 id="b16Genre">Mystery</h4>
+              <p id="b16Desc">A fast-paced mystery and conspiracy.</p>
+              <p class="price">$15</p>
+              <button id="b16Btn" class="reserve-btn">Reserve</button>
+            </div>
+
+            <!-- Book 17 -->
+            <div class="book-card1">
+              <img src="images/book18.jpg" alt="In the Woods" />
+              <h3 id="b17Title">In the Woods</h3>
+              <h4 id="b17Genre">Thriller</h4>
+              <p id="b17Desc">
+                A detective hunts a killer trapped in a frozen town.
+              </p>
+              <p class="price">$20</p>
+              <button id="b17Btn" class="reserve-btn">Reserve</button>
+            </div>
+
+            <!-- Book 18 -->
+            <div class="book-card1">
+              <img src="images/book19.jpeg" alt="Dune" />
+              <h3 id="b18Title">Dune</h3>
+              <h4 id="b18Genre">Science</h4>
+              <p id="b18Desc">A legendary science fiction masterpiece.</p>
+              <p class="price">$25</p>
+              <button id="b18Btn" class="reserve-btn">Reserve</button>
+            </div>
+
+            <!-- Book 19 -->
+            <div class="book-card1">
+              <img
+                src="images/book20.jpeg"
+                alt="The Hitchhiker's Guide to the Galaxy"
+              />
+              <h3 id="b19Title">The Hitchhiker's Guide to the Galaxy</h3>
+              <h4 id="b19Genre">Science</h4>
+              <p id="b19Desc">A hilarious sci-fi adventure.</p>
+              <p class="price">$10</p>
+              <button id="b19Btn" class="reserve-btn">Reserve</button>
+            </div>
+
+            <!-- Book 20 -->
+            <div class="book-card1">
+              <img src="images/book21.jpeg" alt="You Are a Badass" />
+              <h3 id="b20Title">You Are a Badass</h3>
+              <h4 id="b20Genre">Self help</h4>
+              <p id="b20Desc">A motivational guide to confidence.</p>
+              <p class="price">$15</p>
+              <button id="b20Btn" class="reserve-btn">Reserve</button>
+            </div>
+          </div>
+
+          <!-- Page 3 -->
+          <div class="books-page" data-page="3">
+            <!-- Book 21 -->
+            <div class="book-card1">
+              <img
+                src="images/book22.jpeg"
+                alt="The Subtle Art of Not Giving a F*ck"
+              />
+              <h3 id="b21Title">The Subtle Art of Not Giving a F*ck</h3>
+              <h4 id="b21Genre">Self help</h4>
+              <p id="b21Desc">
+                A counterintuitive approach to living a good life.
+              </p>
+              <p class="price">$10</p>
+              <button id="b21Btn" class="reserve-btn">Reserve</button>
+            </div>
+
+            <!-- Book 22 -->
+            <div class="book-card1">
+              <img
+                src="images/book.50.jpg"
+                alt="The Hobbit: The Desolation of Smaug"
+              />
+              <h3 id="b22Title">The Hobbit: The Desolation of Smaug</h3>
+              <h4 id="b22Genre">Fantasy</h4>
+              <p id="b22Desc">An epic fantasy adventure in Middle-earth.</p>
+              <p class="price">$15</p>
+              <button id="b22Btn" class="reserve-btn">Reserve</button>
+            </div>
+
+            <!-- Book 23 -->
+            <div class="book-card1">
+              <img src="images/book23.jpeg" alt="Gone Girl" />
+              <h3 id="b23Title">Gone Girl</h3>
+              <h4 id="b23Genre">Thriller</h4>
+              <p id="b23Desc">A dark psychological thriller full of twists.</p>
+              <p class="price">$20</p>
+              <button id="b23Btn" class="reserve-btn">Reserve</button>
+            </div>
+
+            <!-- Book 24 -->
+            <div class="book-card1">
+              <img src="images/book24.jpeg" alt="Big Little Lies" />
+              <h3 id="b24Title">Big Little Lies</h3>
+              <h4 id="b24Genre">Thriller</h4>
+              <p id="b24Desc">A gripping story of secrets and relationships.</p>
+              <p class="price">$25</p>
+              <button id="b24Btn" class="reserve-btn">Reserve</button>
+            </div>
+
+            <!-- Book 25 -->
+            <div class="book-card1">
+              <img src="images/book25.jpeg" alt="The Lord of the Rings" />
+              <h3 id="b25Title">The Lord of the Rings</h3>
+              <h4 id="b25Genre">Fantasy</h4>
+              <p id="b25Desc">A legendary fantasy saga of good versus evil.</p>
+              <p class="price">$10</p>
+              <button id="b25Btn" class="reserve-btn">Reserve</button>
+            </div>
+
+            <!-- Book 26 -->
+            <div class="book-card1">
+              <img src="images/upbook1.jpg" alt="The Third Policeman" />
+              <h3 id="b26Title">The Third Policeman</h3>
+              <h4 id="b26Genre">Philosophy</h4>
+              <p id="b26Desc">A surreal and darkly humorous novel.</p>
+              <p class="price">$15</p>
+              <button id="b26Btn" class="reserve-btn">Reserve</button>
+            </div>
+
+            <!-- Book 27 -->
+            <div class="book-card1">
+              <img src="images/upbook2.jpg" alt="Codex Seraphinianus" />
+              <h3 id="b27Title">Codex Seraphinianus</h3>
+              <h4 id="b27Genre">Art design</h4>
+              <p id="b27Desc">
+                An enigmatic and illustrated fictional encyclopedia.
+              </p>
+              <p class="price">$20</p>
+              <button id="b27Btn" class="reserve-btn">Reserve</button>
+            </div>
+
+            <!-- Book 28 -->
+            <div class="book-card1">
+              <img src="images/upbook3.jpg" alt="A Kiss Before Dying" />
+              <h3 id="b28Title">A Kiss Before Dying</h3>
+              <h4 id="b28Genre">Mystery</h4>
+              <p id="b28Desc">A classic psychological crime novel.</p>
+              <p class="price">$25</p>
+              <button id="b28Btn" class="reserve-btn">Reserve</button>
+            </div>
+
+            <!-- Book 29 -->
+            <div class="book-card1">
+              <img src="images/upbook4.jpg" alt="The Art of Learning" />
+              <h3 id="b29Title">The Art of Learning</h3>
+              <h4 id="b29Genre">Self help</h4>
+              <p id="b29Desc">Mastering performance and lifelong learning.</p>
+              <p class="price">$10</p>
+              <button id="b29Btn" class="reserve-btn">Reserve</button>
+            </div>
+
+            <!-- Book 30 -->
+            <div class="book-card1">
+              <img src="images/upbook5.jpg" alt="The Dying Earth" />
+              <h3 id="b30Title">The Dying Earth</h3>
+              <h4 id="b30Genre">Fantasy</h4>
+              <p id="b30Desc">A classic collection of fantasy stories.</p>
+              <p class="price">$15</p>
+              <button id="b30Btn" class="reserve-btn">Reserve</button>
+            </div>
+          </div>
+
+          <!-- Page 4 -->
+          <div class="books-page" data-page="4">
+            <!-- Book 31 -->
+            <div class="book-card1">
+              <img src="images/1736773411-book2.jpg" alt="1984" />
+              <h3 id="b31Title">1984</h3>
+              <h4 id="b31Genre">Politics</h4>
+              <p id="b31Desc">
+                A dystopian novel about totalitarianism and surveillance.
+              </p>
+              <p class="price">$10</p>
+              <button id="b31Btn" class="reserve-btn">Reserve</button>
+            </div>
+
+            <!-- Book 32 -->
+            <div class="book-card1">
+              <img
+                src="images/book100.jpg"
+                alt="Emily Wilde's Compendium of Lost Tales"
+              />
+              <h3 id="b32Title">Emily Wilde's Compendium of Lost Tales</h3>
+              <h4 id="b32Genre">Fairy tail</h4>
+              <p id="b32Desc">
+                A magical collection of forgotten stories and adventures.
+              </p>
+              <p class="price">$15</p>
+              <button id="b32Btn" class="reserve-btn">Reserve</button>
             </div>
 
             <!-- Book 33 -->
-            <div class="book-card">
+            <div class="book-card1">
               <img src="images/book101.jpg" alt="The Swan Bride" />
-              <h3>The Swan Bride</h3>
-              <h4>Fairy tale</h4>
-              <p>A mystical tale of love, transformation, and destiny.</p>
+              <h3 id="b33Title">The Swan Bride</h3>
+              <h4 id="b33Genre">Fairy tale</h4>
+              <p id="b33Desc">
+                A mystical tale of love, transformation, and destiny.
+              </p>
               <p class="price">$20</p>
-              <button class="reserve-btn">Reserve</button>
+              <button id="b33Btn" class="reserve-btn">Reserve</button>
             </div>
 
             <!-- Book 34 -->
-            <div class="book-card">
+            <div class="book-card1">
               <img src="images/book102.jpg" alt="A Little Daylight Left" />
-              <h3>A Little Daylight Left</h3>
-              <h4>Poetry</h4>
-              <p>A heartwarming story about love, loss, and hope.</p>
+              <h3 id="b34Title">A Little Daylight Left</h3>
+              <h4 id="b34Genre">Poetry</h4>
+              <p id="b34Desc">
+                A heartwarming story about love, loss, and hope.
+              </p>
               <p class="price">$25</p>
-              <button class="reserve-btn">Reserve</button>
+              <button id="b34Btn" class="reserve-btn">Reserve</button>
             </div>
 
             <!-- Book 35 -->
-            <div class="book-card">
+            <div class="book-card1">
               <img src="images/book103.jpg" alt="The Book of Jonah" />
-              <h3>The Book of Jonah</h3>
-              <h4>Poetry</h4>
-              <p>An insightful exploration of human nature and moral dilemmas.</p>
+              <h3 id="b35Title">The Book of Jonah</h3>
+              <h4 id="b35Genre">Poetry</h4>
+              <p id="b35Desc">
+                An insightful exploration of human nature and moral dilemmas.
+              </p>
               <p class="price">$10</p>
-              <button class="reserve-btn">Reserve</button>
+              <button id="b35Btn" class="reserve-btn">Reserve</button>
             </div>
 
             <!-- Book 36 -->
-            <div class="book-card">
+            <div class="book-card1">
               <img src="images/book104.jpg" alt="Nature Matters" />
-              <h3>Nature Matters</h3>
-              <h4>Poetry</h4>
-              <p>A compelling look at environmental issues and ecology.</p>
+              <h3 id="b36Title">Nature Matters</h3>
+              <h4 id="b36Genre">Poetry</h4>
+              <p id="b36Desc">
+                A compelling look at environmental issues and ecology.
+              </p>
               <p class="price">$15</p>
-              <button class="reserve-btn">Reserve</button>
+              <button id="b36Btn" class="reserve-btn">Reserve</button>
             </div>
 
             <!-- Book 37 -->
-            <div class="book-card">
+            <div class="book-card1">
               <img src="images/book106.jpg" alt="Babylonia" />
-              <h3>Babylonia</h3>
-              <h4>History</h4>
-              <p>A fascinating journey through ancient Mesopotamian civilization.</p>
+              <h3 id="b37Title">Babylonia</h3>
+              <h4 id="b37Genre">History</h4>
+              <p id="b37Desc">
+                A fascinating journey through ancient Mesopotamian civilization.
+              </p>
               <p class="price">$20</p>
-              <button class="reserve-btn">Reserve</button>
+              <button id="b37Btn" class="reserve-btn">Reserve</button>
             </div>
 
             <!-- Book 38 -->
-            <div class="book-card">
+            <div class="book-card1">
               <img src="images/book105.png" alt="Spy School Blackout" />
-              <h3>Spy School Blackout</h3>
-              <h4>Adventure</h4>
-              <p>An action-packed espionage story full of suspense and thrills.</p>
+              <h3 id="b38Title">Spy School Blackout</h3>
+              <h4 id="b38Genre">Adventure</h4>
+              <p id="b38Desc">
+                An action-packed espionage story full of suspense and thrills.
+              </p>
               <p class="price">$25</p>
-              <button class="reserve-btn">Reserve</button>
+              <button id="b38Btn" class="reserve-btn">Reserve</button>
             </div>
 
             <!-- Book 39 -->
-            <div class="book-card">
+            <div class="book-card1">
               <img src="images/book107.jpg" alt="Beg, Borrow, or Steal" />
-              <h3>Beg, Borrow, or Steal</h3>
-              <h4>Romance</h4>
-              <p>A gripping tale of crime, cunning, and survival.</p>
+              <h3 id="b39Title">Beg, Borrow, or Steal</h3>
+              <h4 id="b39Genre">Romance</h4>
+              <p id="b39Desc">
+                A gripping tale of crime, cunning, and survival.
+              </p>
               <p class="price">$10</p>
-              <button class="reserve-btn">Reserve</button>
+              <button id="b39Btn" class="reserve-btn">Reserve</button>
             </div>
 
             <!-- Book 40 -->
-            <div class="book-card">
+            <div class="book-card1">
               <img src="images/book108.jpg" alt="At the Edge of Empire" />
-              <h3>At the Edge of Empire</h3>
-              <h4>Politics</h4>
-              <p>An insightful analysis of empire, power, and history.</p>
+              <h3 id="b40Title">At the Edge of Empire</h3>
+              <h4 id="b40Genre">Politics</h4>
+              <p id="b40Desc">
+                An insightful analysis of empire, power, and history.
+              </p>
               <p class="price">$15</p>
-              <button class="reserve-btn">Reserve</button>
+              <button id="b40Btn" class="reserve-btn">Reserve</button>
             </div>
-
           </div>
 
           <!-- Pagination -->
           <div class="pagination">
-           <button class="prev-btn">« Prev</button>
-
+            <button class="prev-btn">« Prev</button>
             <button class="page-btn" data-page="1">1</button>
             <button class="page-btn" data-page="2">2</button>
             <button class="page-btn" data-page="3">3</button>
             <button class="page-btn" data-page="4">4</button>
-
-          <button class="next-btn">Next »</button>
+            <button class="next-btn">Next »</button>
           </div>
-
+        </div>
       </div>
     </section>
 
@@ -571,5 +620,6 @@
 
     <script src="js/main.js"></script>
     <script src="js/book.js"></script>
+    <script src="js/book-lang.js"></script>
   </body>
 </html>

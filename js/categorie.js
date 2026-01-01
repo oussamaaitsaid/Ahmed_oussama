@@ -175,3 +175,4 @@ langSelect.addEventListener("change", () => {
   applyLang(langSelect.value);
 });
 
+

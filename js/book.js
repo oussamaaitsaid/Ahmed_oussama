@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const cards = document.querySelectorAll(".book-card");
+  const cards = document.querySelectorAll(".book-card1");
   const pageButtons = document.querySelectorAll(".page-btn");
   const prevBtn = document.querySelector(".prev-btn");
   const nextBtn = document.querySelector(".next-btn");
@@ -54,7 +54,7 @@ document.addEventListener("DOMContentLoaded", () => {
 // the search part
 const searchInput = document.getElementById("bookSearch");
 const pagination = document.querySelector(".pagination");
-const allCards = document.querySelectorAll(".book-card");
+const allCards = document.querySelectorAll(".book-card1");
 const booksContainer = document.getElementById("books-container");
 
 // Add these declarations
@@ -201,7 +201,7 @@ function updateHeader() {
     headerLogin.style.display = "none";
     logoutLink.style.display = "inline-block";
     userNameSpan.style.display = "inline-block";
-    userNameSpan.textContent = "Hi, " + user.name;
+    userNameSpan.textContent = user.name;
   } else {
     headerLogin.style.display = "inline-block";
     logoutLink.style.display = "none";
@@ -218,3 +218,6 @@ function logout() {
 
 // Call it on page load
 document.addEventListener("DOMContentLoaded", updateHeader);
+
+
+

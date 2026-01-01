@@ -5,19 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>BookVerse | Your Online Bookstore</title>
     <link rel="stylesheet" href="css/main.css" />
+    <!-- Include Font Awesome CDN at the end of your <head> -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
   </head>
   <body>
     <button id="backToTop" title="Go to top">↑</button>
     <!-- Loader -->
     <div id="loader">
-      <span class="book-icon"><img src="images/logo.jpg" alt="logo" /></span>
-      <p id="loaderText" class="mt-4 text-lg text-gray-700">
-        Unlocking the world of stories…
-      </p>
+      <span class="book-icon"><img src="images/favicon.png" alt="logo" /></span>
+      
     </div>
     <!-- ===== SIDEBAR ===== -->
     <div id="sidebar" class="sidebar">
@@ -136,32 +140,62 @@
     </section>
 
     <!-- ===== ABOUT SECTION ===== -->
-    <section id="about" class="about">
-      <h2 id="aboutTitle">About Us</h2>
-      <p id="aboutP1">
-        BookVerse is an online bookstore created for book lovers, by book
-        lovers. We believe that every story has the power to change lives,
-        ignite imagination, and inspire minds of all ages. Whether you're
-        seeking timeless classics, modern bestsellers, or hidden gems, BookVerse
-        is your gateway to a world of stories.
-      </p>
-      <p id="aboutP2">
-        Our mission is to make books accessible to everyone, offering an easy,
-        fast, and enjoyable browsing experience. We carefully curate our
-        collection to include a wide variety of genres, from fiction and fantasy
-        to science, history, self-help, and art design, so that every reader can
-        find their perfect match.
-      </p>
-      <p id="aboutP3">
-        At BookVerse, we value community and connection. We encourage readers to
-        explore, share, and discuss their favorite books. Our intuitive platform
-        allows you to reserve your chosen titles, keep track of your reading
-        journey, and discover new authors that inspire and challenge you.
-      </p>
-      <p id="aboutP4">
-        Join us at BookVerse and embark on a literary adventure where
-        imagination knows no bounds and stories come alive.
-      </p>
+    <section id="about" class="about-section">
+      <div class="container">
+        <div class="about-header">
+          <h2 id="aboutTitle">About Us</h2>
+          <p class="subtitle">Discover the world of stories with BookVerse</p>
+        </div>
+
+        <div class="about-cards">
+          <div class="about-card">
+            <div class="icon">
+              <i class="fas fa-book-open"></i>
+            </div>
+            <h3>Our Story</h3>
+            <p>
+              BookVerse is an online bookstore created for book lovers, by book
+              lovers. Every story has the power to change lives, ignite
+              imagination, and inspire minds of all ages.
+            </p>
+          </div>
+
+          <div class="about-card">
+            <div class="icon">
+              <i class="fas fa-bullseye"></i>
+            </div>
+            <h3>Our Mission</h3>
+            <p>
+              Making books accessible to everyone with an easy, fast, and
+              enjoyable browsing experience. Our collection spans fiction,
+              fantasy, science, history, self-help, and art design.
+            </p>
+          </div>
+
+          <div class="about-card">
+            <div class="icon">
+              <i class="fas fa-users"></i>
+            </div>
+            <h3>Community</h3>
+            <p>
+              We value connection and discussion. Explore, share, and discuss
+              your favorite books. Reserve titles, track your reading journey,
+              and discover new authors.
+            </p>
+          </div>
+
+          <div class="about-card">
+            <div class="icon">
+              <i class="fas fa-rocket"></i>
+            </div>
+            <h3>Join Us</h3>
+            <p>
+              Embark on a literary adventure where imagination knows no bounds
+              and stories come alive.
+            </p>
+          </div>
+        </div>
+      </div>
     </section>
 
     <section id="books" class="books">
@@ -177,114 +211,132 @@
           <!-- Book Card 1 -->
           <div class="book-card">
             <img src="images/book1.jpg" alt="Book" />
-            <h3>To Kill A Mockingbird</h3>
-            <p id="book1Desc">
-              Childhood innocence confronts racial injustice in the American
-              South.
-            </p>
-            <a href="#" class="signup-btn protected-btn" id="joinNow1"
-              >Join Now</a
-            >
+            <div class="book-info">
+              <h3>To Kill A Mockingbird</h3>
+              <p id="book1Desc">
+                Childhood innocence confronts racial injustice in the American
+                South.
+              </p>
+              <a href="#" class="signup-btn protected-btn" id="joinNow1"
+                >Join Now</a
+              >
+            </div>
           </div>
 
           <!-- Book Card 2 -->
           <div class="book-card">
             <img src="images/book10.jpg" alt="Book" />
-            <h3>The Power Of Now</h3>
-            <p id="book2Desc">
-              A spiritual guide to achieving peace by living in the present
-              moment.
-            </p>
-            <a href="#" class="signup-btn protected-btn" id="joinNow2"
-              >Join Now</a
-            >
+            <div class="book-info">
+              <h3>The Power Of Now</h3>
+              <p id="book2Desc">
+                A spiritual guide to achieving peace by living in the present
+                moment.
+              </p>
+              <a href="#" class="signup-btn protected-btn" id="joinNow2"
+                >Join Now</a
+              >
+            </div>
           </div>
 
           <!-- Book Card 3 -->
           <div class="book-card">
             <img src="images/book15.jpg" alt="Book" />
-            <h3>Think And Grow Rich</h3>
-            <p id="book3Desc">
-              A self-help guide detailing 13 steps to turn thought into wealth
-              and success.
-            </p>
-            <a href="#" class="signup-btn protected-btn" id="joinNow3"
-              >Join Now</a
-            >
+            <div class="book-info">
+              <h3>Think And Grow Rich</h3>
+              <p id="book3Desc">
+                A self-help guide detailing 13 steps to turn thought into wealth
+                and success.
+              </p>
+              <a href="#" class="signup-btn protected-btn" id="joinNow3"
+                >Join Now</a
+              >
+            </div>
           </div>
 
           <!-- Book Card 4 -->
           <div class="book-card">
             <img src="images/book4.jpg" alt="Book" />
-            <h3>The Alchemist</h3>
-            <p id="book4Desc">
-              A shepherd’s journey to discover personal legend and destiny.
-            </p>
-            <a href="#" class="signup-btn protected-btn" id="joinNow4"
-              >Join Now</a
-            >
+            <div class="book-info">
+              <h3>The Alchemist</h3>
+              <p id="book4Desc">
+                A shepherd's journey to discover personal legend and destiny.
+              </p>
+              <a href="#" class="signup-btn protected-btn" id="joinNow4"
+                >Join Now</a
+              >
+            </div>
           </div>
 
           <!-- Book Card 5 -->
           <div class="book-card">
             <img src="images/book5.jpg" alt="Book" />
-            <h3>Pride & Prejudice</h3>
-            <p id="book5Desc">
-              A romantic novel about manners, upbringing, and marriage.
-            </p>
-            <a href="#" class="signup-btn protected-btn" id="joinNow5"
-              >Join Now</a
-            >
+            <div class="book-info">
+              <h3>Pride & Prejudice</h3>
+              <p id="book5Desc">
+                A romantic novel about manners, upbringing, and marriage.
+              </p>
+              <a href="#" class="signup-btn protected-btn" id="joinNow5"
+                >Join Now</a
+              >
+            </div>
           </div>
 
           <!-- Book Card 6 -->
           <div class="book-card">
             <img src="images/book.50.jpg" alt="Book" />
-            <h3>The Hobbit</h3>
-            <p id="book6Desc">
-              A hobbit’s quest to reclaim a lost treasure in Middle-earth.
-            </p>
-            <a href="#" class="signup-btn protected-btn" id="joinNow6"
-              >Join Now</a
-            >
+            <div class="book-info">
+              <h3>The Hobbit</h3>
+              <p id="book6Desc">
+                A hobbit's quest to reclaim a lost treasure in Middle-earth.
+              </p>
+              <a href="#" class="signup-btn protected-btn" id="joinNow6"
+                >Join Now</a
+              >
+            </div>
           </div>
 
           <!-- Book Card 7 -->
           <div class="book-card">
             <img src="images/book11.jpg" alt="Book" />
-            <h3>Harry Potter</h3>
-            <p id="book7Desc">
-              The magical adventures of a young wizard and his friends.
-            </p>
-            <a href="#" class="signup-btn protected-btn" id="joinNow7"
-              >Join Now</a
-            >
+            <div class="book-info">
+              <h3>Harry Potter</h3>
+              <p id="book7Desc">
+                The magical adventures of a young wizard and his friends.
+              </p>
+              <a href="#" class="signup-btn protected-btn" id="joinNow7"
+                >Join Now</a
+              >
+            </div>
           </div>
 
           <!-- Book Card 8 -->
           <div class="book-card">
             <img src="images/book8.jpg" alt="Book" />
-            <h3>Educated</h3>
-            <p id="book8Desc">
-              Memoir of a girl raised by survivalists who began school at
-              seventeen and earned a PhD.
-            </p>
-            <a href="#" class="signup-btn protected-btn" id="joinNow8"
-              >Join Now</a
-            >
+            <div class="book-info">
+              <h3>Educated</h3>
+              <p id="book8Desc">
+                Memoir of a girl raised by survivalists who began school at
+                seventeen and earned a PhD.
+              </p>
+              <a href="#" class="signup-btn protected-btn" id="joinNow8"
+                >Join Now</a
+              >
+            </div>
           </div>
 
           <!-- Book Card 9 -->
           <div class="book-card">
             <img src="images/book9.jpg" alt="Book" />
-            <h3>Becoming</h3>
-            <p id="book9Desc">
-              Michelle Obama's memoir about her life from Chicago to the White
-              House.
-            </p>
-            <a href="#" class="signup-btn protected-btn" id="joinNow9"
-              >Join Now</a
-            >
+            <div class="book-info">
+              <h3>Becoming</h3>
+              <p id="book9Desc">
+                Michelle Obama's memoir about her life from Chicago to the White
+                House.
+              </p>
+              <a href="#" class="signup-btn protected-btn" id="joinNow9"
+                >Join Now</a
+              >
+            </div>
           </div>
         </div>
       </div>
@@ -424,5 +476,11 @@
     </footer>
 
     <script src="js/main.js"></script>
+    <script>
+      // On page load
+      const savedLang = localStorage.getItem("lang") || "en";
+      bookLangSelect.value = savedLang;
+      applyBookLanguage(savedLang);
+    </script>
   </body>
 </html>
