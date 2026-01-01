@@ -28,8 +28,8 @@ body {
 
 /* Logo as loader */
 .book-icon img {
-  width: 150px;
-  height: 120px;
+  width: 180px;
+  height: 150px;
   object-fit: contain;
   border-radius: 50%;
 

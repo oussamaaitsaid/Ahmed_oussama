@@ -3,8 +3,6 @@
   background: #f9f9f9;
   text-align: center;
   padding-top: 120px; /* adjust to your header height */
-
-
 }
 
 .books-section h2 {
@@ -287,4 +285,177 @@ html {
 #backToTop:hover {
   background-color: #ffc107;
   transform: scale(1.1);
+}
+
+/* ===== Large laptops & desktops ===== */
+@media (max-width: 1400px) {
+  .books-page {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* ===== Standard laptops ===== */
+@media (max-width: 1200px) {
+  .books-section {
+    padding: 40px 15px;
+    padding-top: 110px;
+  }
+
+  .books-page {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .book-card1 {
+    padding: 14px;
+  }
+}
+
+/* ===== Tablets (landscape) ===== */
+@media (max-width: 992px) {
+  .books-page {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+  }
+
+  .book-card1 img {
+    height: 170px;
+  }
+
+  .book-card1 h3 {
+    font-size: 1rem;
+  }
+
+  .book-card1 p {
+    font-size: 0.85rem;
+  }
+}
+
+/* ===== Tablets & large phones ===== */
+@media (max-width: 768px) {
+  .books-section h2 {
+    font-size: 1.6em;
+  }
+
+  .books-page {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .book-card1 {
+    border-radius: 12px;
+  }
+
+  .reserve-btn {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .pagination {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+  }
+}
+
+/* ===== Mobile phones ===== */
+@media (max-width: 480px) {
+  .books-section {
+    padding: 30px 12px;
+    padding-top: 100px;
+  }
+
+  .books-page {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .book-card1 {
+    max-width: 320px;
+    margin: auto;
+    padding: 16px;
+  }
+
+  .book-card1 img {
+    height: 190px;
+  }
+
+  .book-card1 h4 {
+    font-size: 0.85rem;
+  }
+
+  .book-card1 h3 {
+    font-size: 1rem;
+  }
+
+  .book-card1 p {
+    font-size: 0.85rem;
+  }
+
+  #bookSearch {
+    font-size: 0.9rem;
+    padding: 10px 16px;
+  }
+
+  #backToTop {
+    width: 44px;
+    height: 44px;
+    font-size: 20px;
+    bottom: 20px;
+    right: 20px;
+  }
+}
+
+/* ===== HOVER (DESKTOP ONLY) ===== */
+@media (hover: hover) {
+  .page-btn:hover,
+  .next-btn:hover,
+  .prev-btn:hover {
+    background: #e67e22;
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 18px rgba(230, 126, 34, 0.35);
+  }
+}
+
+/* ===== DISABLED STATE ===== */
+.page-btn:disabled,
+.next-btn:disabled,
+.prev-btn:disabled {
+  background: #ddd;
+  color: #999;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
+
+/* ===== MOBILE OPTIMIZATION ===== */
+@media (max-width: 768px) {
+  .pagination {
+    gap: 8px;
+  }
+
+  .page-btn,
+  .next-btn,
+  .prev-btn {
+    min-width: 38px;
+    height: 38px;
+    font-size: 0.9rem;
+    border-radius: 8px;
+  }
+}
+
+/* ===== VERY SMALL PHONES ===== */
+@media (max-width: 480px) {
+  .pagination {
+    margin-top: 30px;
+  }
+
+  .page-btn,
+  .next-btn,
+  .prev-btn {
+    min-width: 36px;
+    height: 36px;
+    font-size: 0.85rem;
+  }
 }
