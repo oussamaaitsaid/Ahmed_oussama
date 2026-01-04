@@ -1,0 +1,71 @@
+body {
+  background: #fffaf2;
+  font-family: Arial, sans-serif;
+}
+
+.reserve-container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.reserve-card {
+  background: #fff;
+  display: flex;
+  gap: 40px;
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  max-width: 900px;
+  width: 100%;
+}
+
+.reserve-card img {
+  width: 300px;
+  object-fit: contain;
+}
+
+.reserve-info {
+  flex: 1;
+}
+
+.reserve-info h2 {
+  color: #222;
+}
+
+.reserve-info h4 {
+  color: #e67e22;
+  margin-bottom: 10px;
+}
+
+.reserve-info label {
+  display: block;
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+.reserve-info input,
+.reserve-info select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border-radius: 8px;
+  border: 2px solid #e67e22;
+}
+
+#validateBtn {
+  margin-top: 25px;
+  padding: 12px;
+  background: #e67e22;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#validateBtn:hover {
+  background: #cf6c17;
+}

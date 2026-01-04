@@ -221,3 +221,48 @@ document.addEventListener("DOMContentLoaded", updateHeader);
 
 
 
+function getCategoryFromURL() {
+  const params = new URLSearchParams(window.location.search);
+  return params.get("category");
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  const selectedCategory = getCategoryFromURL();
+  if (!selectedCategory) return;
+
+  const cards = document.querySelectorAll(".book-card1");
+
+  cards.forEach(card => {
+    const bookCategory =
+      card.querySelector("h4").textContent.trim();
+
+    card.style.display =
+      bookCategory === selectedCategory ? "block" : "none";
+  });
+
+  // Change page title
+  document.getElementById("booksTitle").textContent =
+    selectedCategory + " Books";
+
+  // Hide pagination if filtering
+  const pagination = document.querySelector(".pagination");
+  if (pagination) pagination.style.display = "none";
+});
+
+
+// ================= RESERVE BUTTON HANDLER =================
+document.querySelectorAll(".reserve-btn").forEach(btn => {
+  btn.addEventListener("click", (e) => {
+    const card = e.target.closest(".book-card1");
+
+    const bookData = {
+      title: card.querySelector("h3").textContent,
+      category: card.querySelector("h4").textContent,
+      description: card.querySelector("p").textContent,
+      image: card.querySelector("img").src
+    };
+
+    localStorage.setItem("selectedBook", JSON.stringify(bookData));
+    window.location.href = "reserve.html";
+  });
+});

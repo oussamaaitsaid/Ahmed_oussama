@@ -175,4 +175,49 @@ langSelect.addEventListener("change", () => {
   applyLang(langSelect.value);
 });
 
+// ================= CATEGORY LIVE SEARCH =================
+const categorySearch = document.getElementById("categorySearch");
+const categoryCards = document.querySelectorAll(".category-card");
+
+categorySearch.addEventListener("input", () => {
+  const value = categorySearch.value.toLowerCase().trim();
+  let anyVisible = false;
+
+  categoryCards.forEach(card => {
+    const title = card.querySelector("h2").textContent.toLowerCase();
+
+    if (title.includes(value)) {
+      card.style.display = "block";
+      anyVisible = true;
+    } else {
+      card.style.display = "none";
+    }
+  });
+
+  // Disable pagination during search
+  const pagination = document.querySelector(".pagination");
+  if (pagination) {
+    pagination.style.display = value ? "none" : "flex";
+  }
+});
+
+
+// ================= LOGOUT LOGIC =================
+const logoutLink = document.getElementById("logoutLink");
+const userNameSpan = document.getElementById("userName");
+
+if (localStorage.getItem("isLoggedIn") === "true") {
+  const user = JSON.parse(localStorage.getItem("user"));
+  if (user && user.fullName) {
+    userNameSpan.textContent = `Welcome, ${user.fullName}`;
+    userNameSpan.style.display = "inline";
+  }
+  logoutLink.style.display = "inline";
+}
+
+function logout() {
+  localStorage.removeItem("isLoggedIn");
+  localStorage.removeItem("user");
+  window.location.href = "auth.html";
+}
 

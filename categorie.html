@@ -17,24 +17,49 @@
 
     <!-- Simple Header -->
     <header class="simple-header">
-      <div class="container">
-        <a href="landing.html" class="back-btn-header" id="mf-back">← Back</a>
-        <h1>BookVerse</h1>
+  <div class="container">
+    <a href="landing.html" class="back-btn-header" id="mf-back">← Back</a>
 
-        <div class="lang-select-container">
-          <select id="langSelect">
-            <option value="en">English</option>
-            <option value="fr">Français</option>
-            <option value="ar">العربية</option>
-          </select>
-        </div>
+    <h1>BookVerse</h1>
+
+    <!-- RIGHT SIDE CONTROLS -->
+    <div class="header-right">
+      <!-- Logout FIRST (left) -->
+      <a
+        href="#"
+        id="logoutLink"
+        onclick="logout()"
+        style="display:none"
+      >
+        Logout
+      </a>
+
+      <!-- Language selector SECOND (right) -->
+      <div class="lang-select-container">
+        <select id="langSelect">
+          <option value="en">English</option>
+          <option value="fr">Français</option>
+          <option value="ar">العربية</option>
+        </select>
       </div>
-    </header>
+    </div>
+  </div>
+</header>
+
 
     <!-- Categories Header -->
     <header class="categories-header">
       <h1 id="mf-title">Book Categories</h1>
       <p id="mf-subtitle">Choose a category and explore amazing books</p>
+      <div class="category-search">
+  <input
+    type="text"
+    id="categorySearch"
+    placeholder="Search a category..."
+    autocomplete="off"
+  />
+</div>
+
     </header>
 
     <!-- Categories Grid -->
@@ -43,126 +68,126 @@
         <div class="category-card philosophy">
           <div class="overlay">
             <h2 id="mf-philosophy">Philosophy</h2>
-            <a href="#" class="card-btn mf-view">View Books</a>
+<a href="book.html?category=Philosophy" class="card-btn mf-view">View Books</a>
           </div>
         </div>
 
         <div class="category-card psychology">
           <div class="overlay">
             <h2 id="mf-psychology">Psychology</h2>
-            <a href="#" class="card-btn mf-view">View Books</a>
+<a href="book.html?category=Psychology" class="card-btn mf-view">View Books</a>
           </div>
         </div>
 
         <div class="category-card fantasy">
           <div class="overlay">
             <h2 id="mf-fantasy">Fantasy</h2>
-            <a href="#" class="card-btn mf-view">View Books</a>
+<a href="book.html?category=Fantasy" class="card-btn mf-view">View Books</a>
           </div>
         </div>
 
         <div class="category-card fiction">
           <div class="overlay">
             <h2 id="mf-fiction">Fiction</h2>
-            <a href="#" class="card-btn mf-view">View Books</a>
+<a href="book.html?category=Fiction" class="card-btn mf-view">View Books</a>
           </div>
         </div>
 
         <div class="category-card science">
           <div class="overlay">
             <h2 id="mf-science">Science</h2>
-            <a href="#" class="card-btn mf-view">View Books</a>
+<a href="book.html?category=Science" class="card-btn mf-view">View Books</a>
           </div>
         </div>
 
         <div class="category-card technology">
           <div class="overlay">
             <h2 id="mf-technology">Technology</h2>
-            <a href="#" class="card-btn mf-view">View Books</a>
+<a href="book.html?category=Technology" class="card-btn mf-view">View Books</a>
           </div>
         </div>
 
         <div class="category-card history">
           <div class="overlay">
             <h2 id="mf-history">History</h2>
-            <a href="#" class="card-btn mf-view">View Books</a>
+<a href="book.html?category=History" class="card-btn mf-view">View Books</a>
           </div>
         </div>
 
         <div class="category-card art">
           <div class="overlay">
             <h2 id="mf-art">Art & Design</h2>
-            <a href="#" class="card-btn mf-view">View Books</a>
+<a href="book.html?category=Art design" class="card-btn mf-view">View Books</a>
           </div>
         </div>
 
         <div class="category-card business">
           <div class="overlay">
             <h2 id="mf-business">Business</h2>
-            <a href="#" class="card-btn mf-view">View Books</a>
+<a href="book.html?category=Business" class="card-btn mf-view">View Books</a>
           </div>
         </div>
 
         <div class="category-card fairytale">
           <div class="overlay">
             <h2 id="mf-fairytale">Fairy Tale</h2>
-            <a href="#" class="card-btn mf-view">View Books</a>
+<a href="book.html?category=Fairy tail" class="card-btn mf-view">View Books</a>
           </div>
         </div>
 
         <div class="category-card mystery">
           <div class="overlay">
             <h2 id="mf-mystery">Mystery</h2>
-            <a href="#" class="card-btn mf-view">View Books</a>
+<a href="book.html?category=Mystery" class="card-btn mf-view">View Books</a>
           </div>
         </div>
 
         <div class="category-card politics">
           <div class="overlay">
             <h2 id="mf-politics">Politics</h2>
-            <a href="#" class="card-btn mf-view">View Books</a>
+<a href="book.html?category=Politics" class="card-btn mf-view">View Books</a>
           </div>
         </div>
 
         <div class="category-card romance">
           <div class="overlay">
             <h2 id="mf-romance">Romance</h2>
-            <a href="#" class="card-btn mf-view">View Books</a>
+<a href="book.html?category=Romance" class="card-btn mf-view">View Books</a>
           </div>
         </div>
 
         <div class="category-card thriller">
           <div class="overlay">
             <h2 id="mf-thriller">Thriller</h2>
-            <a href="#" class="card-btn mf-view">View Books</a>
+<a href="book.html?category=Thriller" class="card-btn mf-view">View Books</a>
           </div>
         </div>
 
         <div class="category-card adventure">
           <div class="overlay">
             <h2 id="mf-adventure">Adventure</h2>
-            <a href="#" class="card-btn mf-view">View Books</a>
+<a href="book.html?category=Adventure" class="card-btn mf-view">View Books</a>
           </div>
         </div>
 
         <div class="category-card selfhelp">
           <div class="overlay">
             <h2 id="mf-selfhelp">Self Help</h2>
-            <a href="#" class="card-btn mf-view">View Books</a>
+<a href="book.html?category=Self help" class="card-btn mf-view">View Books</a>
           </div>
         </div>
 
         <div class="category-card poetry">
           <div class="overlay">
             <h2 id="mf-poetry">Poetry</h2>
-            <a href="#" class="card-btn mf-view">View Books</a>
+<a href="book.html?category=Poetry" class="card-btn mf-view">View Books</a>
           </div>
         </div>
 
         <div class="category-card biography">
           <div class="overlay">
             <h2 id="mf-biography">Biography</h2>
-            <a href="#" class="card-btn mf-view">View Books</a>
+<a href="book.html?category=Biography" class="card-btn mf-view">View Books</a>
           </div>
         </div>
       </div>
@@ -176,6 +201,24 @@
       <button class="page-btn" data-page="3">3</button>
       <button id="nextBtn">Next</button>
     </div>
+
+    <footer id="contact">
+  <div class="footer-container">
+    <h3>BookVerse</h3>
+    <p>Your gateway to unlimited stories.</p>
+
+    <div class="footer-links">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#facts">Facts</a>
+      <a href="#">Privacy</a>
+      <a href="#">Terms</a>
+    </div>
+
+    <p class="copy">© 2025 BookVerse. All Rights Reserved.</p>
+  </div>
+</footer>
+
 
     <script src="js/categorie.js"></script>
   </body>
