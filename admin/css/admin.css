@@ -1,0 +1,310 @@
+/* ===== RESET & BASE ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: #f7f5f2;
+  color: #2e2e2e;
+  min-height: 100vh;
+}
+
+/* ===== MAIN CONTENT ===== */
+.main {
+  padding: 30px;
+  background: #f7f5f2;
+}
+
+/* ===== HEADER ===== */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.header h1 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #1f2933;
+}
+
+.header span {
+  color: #6b7280;
+}
+
+.search-input {
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  background: #fff;
+  width: 220px;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: #8b5e3c;
+}
+
+/* ===== STATS & CARDS ===== */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  margin-bottom: 35px;
+}
+
+.stat-card,
+.card,
+.feedback-card,
+.chart-box,
+.table-box {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 20px;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.05);
+}
+
+/* ===== STAT CARDS ===== */
+.stat-card h3 {
+  font-size: 0.95rem;
+  color: #6b7280;
+}
+
+.stat-card p {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-top: 8px;
+  color: #8b5e3c;
+}
+
+/* ===== TABLES ===== */
+.table-box {
+  margin-bottom: 30px;
+  overflow-x: auto;
+}
+
+.table-box h3 {
+  margin-bottom: 15px;
+  font-size: 1.1rem;
+  color: #1f2933;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 600px;
+}
+
+thead {
+  background: #f1ede7;
+}
+
+th,
+td {
+  padding: 14px;
+  text-align: left;
+  font-size: 0.95rem;
+}
+
+th {
+  font-weight: 600;
+  color: #1f2933;
+}
+
+tbody tr:nth-child(even) {
+  background: #faf9f7;
+}
+
+tbody tr:hover {
+  background: #f1ede7;
+}
+
+/* ===== BUTTONS ===== */
+button {
+  padding: 8px 14px;
+  border-radius: 8px;
+  border: none;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s, opacity 0.2s;
+}
+
+button:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+.add-btn {
+  background: #8b5e3c;
+  color: #ffffff;
+}
+
+.edit {
+  background: #4b6b88;
+  color: #ffffff;
+}
+
+.delete {
+  background: #c55b5b;
+  color: #ffffff;
+}
+
+/* ===== BADGES ===== */
+.badge {
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.badge.admin {
+  background: #8b5e3c;
+  color: #ffffff;
+}
+
+.badge.user {
+  background: #d6c3a3;
+  color: #1f2933;
+}
+
+/* ===== FORMS & INPUTS ===== */
+input[type="text"] {
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  background: #ffffff;
+}
+
+input[type="text"]:focus {
+  outline: none;
+  border-color: #8b5e3c;
+}
+
+/* ===== IMAGES ===== */
+.thumb {
+  width: 45px;
+  height: 65px;
+  border-radius: 6px;
+  object-fit: cover;
+}
+
+/* ===== CHARTS ===== */
+.charts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  margin-bottom: 35px;
+}
+
+/* ===== FEEDBACK ===== */
+.feedback-card {
+  margin-bottom: 20px;
+}
+
+.feedback-card h4 {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1rem;
+  margin-bottom: 8px;
+  color: #1f2933;
+}
+
+.feedback-card p {
+  color: #6b7280;
+  margin-bottom: 12px;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 900px) {
+  .stats {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  table {
+    min-width: 500px;
+  }
+}
+
+@media (max-width: 480px) {
+  .main {
+    padding: 20px;
+  }
+
+  th,
+  td {
+    font-size: 0.85rem;
+    padding: 10px;
+  }
+
+  button {
+    padding: 6px 10px;
+  }
+}
+
+/* Buttons */
+.edit-btn,
+.delete-btn,
+.add-btn {
+  padding: 5px 10px;
+  margin: 2px;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+}
+.edit-btn {
+  background-color: #4caf50;
+  color: white;
+}
+.delete-btn {
+  background-color: #f44336;
+  color: white;
+}
+.add-btn {
+  background-color: #008cba;
+  color: white;
+}
+
+/* Modal */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.modal-content {
+  background-color: #fff;
+  margin: 100px auto;
+  padding: 20px;
+  border-radius: 8px;
+  width: 400px;
+}
+.modal-content input {
+  width: 100%;
+  padding: 5px;
+  margin: 5px 0;
+}
+.close {
+  float: right;
+  font-size: 24px;
+  cursor: pointer;
+}

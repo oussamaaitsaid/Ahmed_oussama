@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Users Management | BookVerse</title>
+  <link rel="stylesheet" href="../css/dashboard.css" />
+  <link rel="stylesheet" href="css/admin.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+</head>
+<body>
+  <div class="sidebar">
+    <h2>BookVerse</h2>
+    <a href="dashboard.html"><i class="fa fa-chart-line"></i> Dashboard</a>
+    <a href="user.html" class="active"><i class="fa fa-users"></i> Users</a>
+    <a href="books.html"><i class="fa fa-book"></i> Books</a>
+    <a href="categories.html"><i class="fa fa-layer-group"></i> Categories</a>
+    <a href="feedback.html"><i class="fa fa-envelope"></i> Feedback</a>
+  </div>
+
+  <div class="main">
+    <div class="header">
+      <h1>Users Management</h1>
+      <input type="text" placeholder="Search users..." class="search-input"/>
+    </div>
+
+    <div class="table-box">
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th><th>Email</th><th>Role</th><th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Oussama AIT SAID</td>
+            <td>admin@gmail.com</td>
+            <td><span class="badge admin">Admin</span></td>
+            <td>Active</td>
+            <td>
+              <button class="edit">Edit</button>
+              <button class="delete">Delete</button>
+            </td>
+          </tr>
+          <tr>
+            <td>Mark Lee</td>
+            <td>mark@mail.com</td>
+            <td><span class="badge user">User</span></td>
+            <td>Active</td>
+            <td>
+              <button class="edit">Edit</button>
+              <button class="delete">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <script src="js/user.js"></script>
+</body>
+</html>

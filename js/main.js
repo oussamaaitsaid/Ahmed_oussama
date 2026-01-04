@@ -545,3 +545,62 @@ function logout() {
 // Call it on page load
 document.addEventListener("DOMContentLoaded", updateHeader);
 
+// ===== CONTACT FORM FEEDBACK STORAGE =====
+const contactForm = document.querySelector(".contact-form");
+
+contactForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  const name = contactForm.name.value.trim();
+  const email = contactForm.email.value.trim();
+  const message = contactForm.message.value.trim();
+  const date = new Date().toISOString().split("T")[0]; // YYYY-MM-DD
+
+  if (!name || !email || !message) return;
+
+  // Get existing feedbacks
+  let feedbacks = JSON.parse(localStorage.getItem("feedbacks")) || [];
+
+  // Add new feedback
+  feedbacks.push({ name, email, message, date });
+
+  // Save back to localStorage
+  localStorage.setItem("feedbacks", JSON.stringify(feedbacks));
+
+  // Clear form
+  contactForm.reset();
+
+  alert("Thank you for your feedback!");
+});
+
+// ===== DYNAMIC CLIENT FEEDBACK DISPLAY =====
+const feedbackSection = document.querySelector("#feedbacks .feedback-track");
+
+// Load feedbacks from localStorage
+let feedbacks = JSON.parse(localStorage.getItem("feedbacks")) || [];
+
+function renderClientFeedbacks() {
+  if (!feedbackSection) return;
+
+  // Clear existing static feedback cards
+  feedbackSection.innerHTML = "";
+
+  if (feedbacks.length === 0) {
+    feedbackSection.innerHTML = "<p>No feedbacks yet.</p>";
+    return;
+  }
+
+  // Create a card for each feedback
+  feedbacks.forEach((fb) => {
+    const card = document.createElement("div");
+    card.className = "feedback-card";
+    card.innerHTML = `
+      <p>"${fb.message}"</p>
+      <h3>- ${fb.name}</h3>
+    `;
+    feedbackSection.appendChild(card);
+  });
+}
+
+// Call the function to render feedbacks
+renderClientFeedbacks();

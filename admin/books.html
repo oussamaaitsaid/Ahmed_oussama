@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Books Management | BookVerse</title>
+    <link rel="stylesheet" href="../css/dashboard.css" />
+    <link rel="stylesheet" href="css/admin.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="sidebar">
+      <h2>BookVerse</h2>
+      <a href="dashboard.html"><i class="fa fa-chart-line"></i> Dashboard</a>
+      <a href="user.html"><i class="fa fa-users"></i> Users</a>
+      <a href="books.html" class="active"><i class="fa fa-book"></i> Books</a>
+      <a href="categories.html"><i class="fa fa-layer-group"></i> Categories</a>
+      <a href="feedback.html"><i class="fa fa-envelope"></i> Feedback</a>
+    </div>
+
+    <div class="main">
+      <div class="header">
+        <h1>Books Management</h1>
+        <button class="add-btn"><i class="fa fa-plus"></i> Add Book</button>
+      </div>
+
+      <div id="bookModal" class="modal">
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <h2 id="modalTitle">Add Book</h2>
+          <form id="bookForm">
+            <input type="hidden" id="bookId" />
+            <label>Title:</label>
+            <input type="text" id="bookTitle" required />
+            <label>Category:</label>
+            <input type="text" id="bookCategory" required />
+            <label>Price:</label>
+            <input type="number" id="bookPrice" required />
+            <label>Stock:</label>
+            <input type="number" id="bookStock" required />
+            <label>Cover URL:</label>
+            <input type="file" id="bookCover" required />
+            <button type="submit" id="saveBook">Save</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="table-box">
+        <table>
+          <thead>
+            <tr>
+              <th>Cover</th>
+              <th>Title</th>
+
+              <th>Category</th>
+              <th>Price</th>
+              <th>Stock</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <img
+                  src="../images/book1.jpg"
+                  class="thumb"
+                  alt="To Kill a Mockingbird"
+                />
+              </td>
+              <td>To Kill a Mockingbird</td>
+
+              <td>Fiction</td>
+              <td>$10</td>
+              <td>10</td>
+              <td>
+                <button class="edit-btn" data-id="1">Edit</button>
+                <button class="delete-btn" data-id="1">Delete</button>
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <img
+                  src="../images/book3.jpg"
+                  class="thumb"
+                  alt="The Great Gatsby"
+                />
+              </td>
+              <td>The Great Gatsby</td>
+
+              <td>Romance</td>
+              <td>$15</td>
+              <td>10</td>
+              <td>
+                <button class="edit-btn" data-id="2">Edit</button>
+                <button class="delete-btn" data-id="2">Delete</button>
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <img
+                  src="../images/book4.jpg"
+                  class="thumb"
+                  alt="The Alchemist"
+                />
+              </td>
+              <td>The Alchemist</td>
+
+              <td>Philosophy</td>
+              <td>$20</td>
+              <td>10</td>
+              <td>
+                <button class="edit-btn" data-id="3">Edit</button>
+                <button class="delete-btn" data-id="3">Delete</button>
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <img
+                  src="../images/book5.jpg"
+                  class="thumb"
+                  alt="Pride and Prejudice"
+                />
+              </td>
+              <td>Pride and Prejudice</td>
+
+              <td>Romance</td>
+              <td>$25</td>
+              <td>10</td>
+              <td>
+                <button class="edit-btn" data-id="4">Edit</button>
+                <button class="delete-btn" data-id="4">Delete</button>
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <img src="../images/book6.png" class="thumb" alt="Sapiens" />
+              </td>
+              <td>Sapiens</td>
+
+              <td>History</td>
+              <td>$10</td>
+              <td>10</td>
+              <td>
+                <button class="edit-btn" data-id="5">Edit</button>
+                <button class="delete-btn" data-id="5">Delete</button>
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <img
+                  src="../images/book7.jpg"
+                  class="thumb"
+                  alt="Atomic Habits"
+                />
+              </td>
+              <td>Atomic Habits</td>
+
+              <td>Self help</td>
+              <td>$15</td>
+              <td>10</td>
+              <td>
+                <button class="edit-btn" data-id="6">Edit</button>
+                <button class="delete-btn" data-id="6">Delete</button>
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <img src="../images/book8.jpg" class="thumb" alt="Educated" />
+              </td>
+              <td>Educated</td>
+
+              <td>Psychology</td>
+              <td>$20</td>
+              <td>10</td>
+              <td>
+                <button class="edit-btn" data-id="7">Edit</button>
+                <button class="delete-btn" data-id="7">Delete</button>
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <img src="../images/book9.jpg" class="thumb" alt="Becoming" />
+              </td>
+              <td>Becoming</td>
+
+              <td>Politics</td>
+              <td>$25</td>
+              <td>10</td>
+              <td>
+                <button class="edit-btn" data-id="8">Edit</button>
+                <button class="delete-btn" data-id="8">Delete</button>
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <img
+                  src="../images/book10.jpg"
+                  class="thumb"
+                  alt="The Power of Now"
+                />
+              </td>
+              <td>The Power of Now</td>
+
+              <td>Philosophy</td>
+              <td>$10</td>
+              <td>10</td>
+              <td>
+                <button class="edit-btn" data-id="9">Edit</button>
+                <button class="delete-btn" data-id="9">Delete</button>
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <img
+                  src="../images/book11.jpg"
+                  class="thumb"
+                  alt="Harry Potter"
+                />
+              </td>
+              <td>Harry Potter</td>
+
+              <td>Fantasy</td>
+              <td>$15</td>
+              <td>10</td>
+              <td>
+                <button class="edit-btn" data-id="10">Edit</button>
+                <button class="delete-btn" data-id="10">Delete</button>
+              </td>
+            </tr>
+
+            <!-- Page 2 -->
+            <tr>
+              <td>
+                <img
+                  src="../images/book12.jpg"
+                  class="thumb"
+                  alt="A Song of Ice and Fire"
+                />
+              </td>
+              <td>A Song of Ice and Fire</td>
+
+              <td>Fantasy</td>
+              <td>$10</td>
+              <td>10</td>
+              <td>
+                <button class="edit-btn" data-id="11">Edit</button>
+                <button class="delete-btn" data-id="11">Delete</button>
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <img
+                  src="../images/book13.jpg"
+                  class="thumb"
+                  alt="The 7 Habits of Highly Effective People"
+                />
+              </td>
+              <td>The 7 Habits of Highly Effective People</td>
+
+              <td>Self help</td>
+              <td>$15</td>
+              <td>10</td>
+              <td>
+                <button class="edit-btn" data-id="12">Edit</button>
+                <button class="delete-btn" data-id="12">Delete</button>
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <img
+                  src="../images/book14.png"
+                  class="thumb"
+                  alt="How to Win Friends & Influence People"
+                />
+              </td>
+              <td>How to Win Friends & Influence People</td>
+
+              <td>Self help</td>
+              <td>$20</td>
+              <td>10</td>
+              <td>
+                <button class="edit-btn" data-id="13">Edit</button>
+                <button class="delete-btn" data-id="13">Delete</button>
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <img
+                  src="../images/book15.jpg"
+                  class="thumb"
+                  alt="Think and Grow Rich"
+                />
+              </td>
+              <td>Think and Grow Rich</td>
+
+              <td>Business</td>
+              <td>$25</td>
+              <td>10</td>
+              <td>
+                <button class="edit-btn" data-id="14">Edit</button>
+                <button class="delete-btn" data-id="14">Delete</button>
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <img
+                  src="../images/book16.jpg"
+                  class="thumb"
+                  alt="The Girl with the Dragon Tattoo"
+                />
+              </td>
+              <td>The Girl with the Dragon Tattoo</td>
+
+              <td>Mystery</td>
+              <td>$10</td>
+              <td>10</td>
+              <td>
+                <button class="edit-btn" data-id="15">Edit</button>
+                <button class="delete-btn" data-id="15">Delete</button>
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <img
+                  src="../images/book17.jpg"
+                  class="thumb"
+                  alt="The Da Vinci Code"
+                />
+              </td>
+              <td>The Da Vinci Code</td>
+
+              <td>Mystery</td>
+              <td>$15</td>
+              <td>10</td>
+              <td>
+                <button class="edit-btn" data-id="16">Edit</button>
+                <button class="delete-btn" data-id="16">Delete</button>
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <img
+                  src="../images/book18.jpg"
+                  class="thumb"
+                  alt="In the Woods"
+                />
+              </td>
+              <td>In the Woods</td>
+
+              <td>Thriller</td>
+              <td>$20</td>
+              <td>10</td>
+              <td>
+                <button class="edit-btn" data-id="17">Edit</button>
+                <button class="delete-btn" data-id="17">Delete</button>
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <img src="../images/book19.jpeg" class="thumb" alt="Dune" />
+              </td>
+              <td>Dune</td>
+
+              <td>Science</td>
+              <td>$25</td>
+              <td>10</td>
+              <td>
+                <button class="edit-btn" data-id="18">Edit</button>
+                <button class="delete-btn" data-id="18">Delete</button>
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <img
+                  src="../images/book20.jpeg"
+                  class="thumb"
+                  alt="The Hitchhiker's Guide to the Galaxy"
+                />
+              </td>
+              <td>The Hitchhiker's Guide to the Galaxy</td>
+
+              <td>Science</td>
+              <td>$10</td>
+              <td>10</td>
+              <td>
+                <button class="edit-btn" data-id="19">Edit</button>
+                <button class="delete-btn" data-id="19">Delete</button>
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <img
+                  src="../images/book21.jpeg"
+                  class="thumb"
+                  alt="You Are a Badass"
+                />
+              </td>
+              <td>You Are a Badass</td>
+
+              <td>Self help</td>
+              <td>$15</td>
+              <td>10</td>
+              <td>
+                <button class="edit-btn" data-id="20">Edit</button>
+                <button class="delete-btn" data-id="20">Delete</button>
+              </td>
+            </tr>
+
+            <!-- Page 3 -->
+            <tr>
+              <td>
+                <img
+                  src="../images/book22.jpeg"
+                  class="thumb"
+                  alt="The Subtle Art of Not Giving a F*ck"
+                />
+              </td>
+              <td>The Subtle Art of Not Giving a F*ck</td>
+
+              <td>Self help</td>
+              <td>$10</td>
+              <td>10</td>
+              <td>
+                <button class="edit-btn" data-id="21">Edit</button>
+                <button class="delete-btn" data-id="21">Delete</button>
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <img
+                  src="../images/book.50.jpg"
+                  class="thumb"
+                  alt="The Hobbit: The Desolation of Smaug"
+                />
+              </td>
+              <td>The Hobbit: The Desolation of Smaug</td>
+
+              <td>Fantasy</td>
+              <td>$15</td>
+              <td>10</td>
+              <td>
+                <button class="edit-btn" data-id="22">Edit</button>
+                <button class="delete-btn" data-id="22">Delete</button>
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <img
+                  src="../images/book23.jpeg"
+                  class="thumb"
+                  alt="Gone Girl"
+                />
+              </td>
+              <td>Gone Girl</td>
+
+              <td>Thriller</td>
+              <td>$20</td>
+              <td>10</td>
+              <td>
+                <button class="edit-btn" data-id="23">Edit</button>
+                <button class="delete-btn" data-id="23">Delete</button>
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <img
+                  src="../images/book24.jpeg"
+                  class="thumb"
+                  alt="Big Little Lies"
+                />
+              </td>
+              <td>Big Little Lies</td>
+
+              <td>Thriller</td>
+              <td>$25</td>
+              <td>10</td>
+              <td>
+                <button class="edit-btn" data-id="24">Edit</button>
+                <button class="delete-btn" data-id="24">Delete</button>
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <img
+                  src="../images/book25.jpeg"
+                  class="thumb"
+                  alt="The Lord of the Rings"
+                />
+              </td>
+              <td>The Lord of the Rings</td>
+
+              <td>Fantasy</td>
+              <td>$10</td>
+              <td>10</td>
+              <td>
+                <button class="edit-btn" data-id="25">Edit</button>
+                <button class="delete-btn" data-id="25">Delete</button>
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <img
+                  src="../images/upbook1.jpg"
+                  class="thumb"
+                  alt="The Third Policeman"
+                />
+              </td>
+              <td>The Third Policeman</td>
+
+              <td>Philosophy</td>
+              <td>$15</td>
+              <td>10</td>
+              <td>
+                <button class="edit-btn" data-id="26">Edit</button>
+                <button class="delete-btn" data-id="26">Delete</button>
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <img
+                  src="../images/upbook2.jpg"
+                  class="thumb"
+                  alt="Codex Seraphinianus"
+                />
+              </td>
+              <td>Codex Seraphinianus</td>
+
+              <td>Art design</td>
+              <td>$20</td>
+              <td>10</td>
+              <td>
+                <button class="edit-btn" data-id="27">Edit</button>
+                <button class="delete-btn" data-id="27">Delete</button>
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <img
+                  src="../images/upbook3.jpg"
+                  class="thumb"
+                  alt="A Kiss Before Dying"
+                />
+              </td>
+              <td>A Kiss Before Dying</td>
+
+              <td>Mystery</td>
+              <td>$25</td>
+              <td>10</td>
+              <td>
+                <button class="edit-btn" data-id="28">Edit</button>
+                <button class="delete-btn" data-id="28">Delete</button>
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <img
+                  src="../images/upbook4.jpg"
+                  class="thumb"
+                  alt="The Art of Learning"
+                />
+              </td>
+              <td>The Art of Learning</td>
+
+              <td>Self help</td>
+              <td>$10</td>
+              <td>10</td>
+              <td>
+                <button class="edit-btn" data-id="29">Edit</button>
+                <button class="delete-btn" data-id="29">Delete</button>
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <img
+                  src="../images/upbook5.jpg"
+                  class="thumb"
+                  alt="The Dying Earth"
+                />
+              </td>
+              <td>The Dying Earth</td>
+
+              <td>Fantasy</td>
+              <td>$15</td>
+              <td>10</td>
+              <td>
+                <button class="edit-btn" data-id="30">Edit</button>
+                <button class="delete-btn" data-id="30">Delete</button>
+              </td>
+            </tr>
+
+            <!-- Page 4 -->
+            <tr>
+              <td>
+                <img
+                  src="../images/1736773411-book2.jpg"
+                  class="thumb"
+                  alt="1984"
+                />
+              </td>
+              <td>1984</td>
+
+              <td>Politics</td>
+              <td>$10</td>
+              <td>10</td>
+              <td>
+                <button class="edit-btn" data-id="31">Edit</button>
+                <button class="delete-btn" data-id="31">Delete</button>
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <img
+                  src="../images/book100.jpg"
+                  class="thumb"
+                  alt="Emily Wilde's Compendium of Lost Tales"
+                />
+              </td>
+              <td>Emily Wilde's Compendium of Lost Tales</td>
+
+              <td>Fairy tail</td>
+              <td>$15</td>
+              <td>10</td>
+              <td>
+                <button class="edit-btn" data-id="32">Edit</button>
+                <button class="delete-btn" data-id="32">Delete</button>
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <img
+                  src="../images/book101.jpg"
+                  class="thumb"
+                  alt="The Swan Bride"
+                />
+              </td>
+              <td>The Swan Bride</td>
+
+              <td>Fairy tale</td>
+              <td>$20</td>
+              <td>10</td>
+              <td>
+                <button class="edit-btn" data-id="33">Edit</button>
+                <button class="delete-btn" data-id="33">Delete</button>
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <img
+                  src="../images/book102.jpg"
+                  class="thumb"
+                  alt="A Little Daylight Left"
+                />
+              </td>
+              <td>A Little Daylight Left</td>
+
+              <td>Poetry</td>
+              <td>$25</td>
+              <td>10</td>
+              <td>
+                <button class="edit-btn" data-id="34">Edit</button>
+                <button class="delete-btn" data-id="34">Delete</button>
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <img
+                  src="../images/book103.jpg"
+                  class="thumb"
+                  alt="The Book of Jonah"
+                />
+              </td>
+              <td>The Book of Jonah</td>
+
+              <td>Poetry</td>
+              <td>$10</td>
+              <td>10</td>
+              <td>
+                <button class="edit-btn" data-id="35">Edit</button>
+                <button class="delete-btn" data-id="35">Delete</button>
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <img
+                  src="../images/book104.jpg"
+                  class="thumb"
+                  alt="Nature Matters"
+                />
+              </td>
+              <td>Nature Matters</td>
+
+              <td>Poetry</td>
+              <td>$15</td>
+              <td>10</td>
+              <td>
+                <button class="edit-btn" data-id="36">Edit</button>
+                <button class="delete-btn" data-id="36">Delete</button>
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <img
+                  src="../images/book106.jpg"
+                  class="thumb"
+                  alt="Babylonia"
+                />
+              </td>
+              <td>Babylonia</td>
+
+              <td>History</td>
+              <td>$20</td>
+              <td>10</td>
+              <td>
+                <button class="edit-btn" data-id="37">Edit</button>
+                <button class="delete-btn" data-id="37">Delete</button>
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <img
+                  src="../images/book105.png"
+                  class="thumb"
+                  alt="Spy School Blackout"
+                />
+              </td>
+              <td>Spy School Blackout</td>
+
+              <td>Adventure</td>
+              <td>$25</td>
+              <td>10</td>
+              <td>
+                <button class="edit-btn" data-id="38">Edit</button>
+                <button class="delete-btn" data-id="38">Delete</button>
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <img
+                  src="../images/book107.jpg"
+                  class="thumb"
+                  alt="Beg, Borrow, or Steal"
+                />
+              </td>
+              <td>Beg, Borrow, or Steal</td>
+
+              <td>Romance</td>
+              <td>$10</td>
+              <td>10</td>
+              <td>
+                <button class="edit-btn" data-id="39">Edit</button>
+                <button class="delete-btn" data-id="39">Delete</button>
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <img
+                  src="../images/book108.jpg"
+                  class="thumb"
+                  alt="At the Edge of Empire"
+                />
+              </td>
+              <td>At the Edge of Empire</td>
+
+              <td>Politics</td>
+              <td>$15</td>
+              <td>10</td>
+              <td>
+                <button class="edit-btn" data-id="40">Edit</button>
+                <button class="delete-btn" data-id="40">Delete</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <script src="js/books.js"></script>
+  </body>
+</html>

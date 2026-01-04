@@ -1,3 +1,41 @@
+
+
+
+// ================= LOAD CATEGORIES FROM LOCALSTORAGE =================
+const categoriesGrid = document.querySelector(".categories-grid");
+
+// Load categories saved by admin
+let categories = JSON.parse(localStorage.getItem("categories")) || [];
+
+// Render categories dynamically
+function renderCategoriesFromAdmin() {
+  if (!categoriesGrid) return;
+
+  // Clear existing cards
+  categoriesGrid.innerHTML = "";
+
+  categories.forEach((cat) => {
+    const div = document.createElement("div");
+    div.className = `category-card ${cat.name
+      .toLowerCase()
+      .replace(/\s+/g, "")}`;
+    div.innerHTML = `
+      <div class="overlay">
+        <h2 id="mf-${cat.name.toLowerCase().replace(/\s+/g, "")}">${
+      cat.name
+    }</h2>
+        <a href="book.html?category=${encodeURIComponent(
+          cat.name
+        )}" class="card-btn mf-view">View Books</a>
+      </div>
+    `;
+    categoriesGrid.appendChild(div);
+  });
+}
+
+// Call it before pagination and search logic
+renderCategoriesFromAdmin();
+
 document.addEventListener("DOMContentLoaded", () => {
   const cards = document.querySelectorAll(".category-card");
   const pageButtons = document.querySelectorAll(".page-btn");
@@ -15,22 +53,18 @@ document.addEventListener("DOMContentLoaded", () => {
     const end = start + cardsPerPage;
 
     cards.forEach((card, index) => {
-      card.style.display =
-        index >= start && index < end ? "block" : "none";
+      card.style.display = index >= start && index < end ? "block" : "none";
     });
 
-    pageButtons.forEach(btn => {
-      btn.classList.toggle(
-        "active",
-        Number(btn.dataset.page) === page
-      );
+    pageButtons.forEach((btn) => {
+      btn.classList.toggle("active", Number(btn.dataset.page) === page);
     });
 
     prevBtn.disabled = page === 1;
     nextBtn.disabled = page === totalPages;
   }
 
-  pageButtons.forEach(btn => {
+  pageButtons.forEach((btn) => {
     btn.addEventListener("click", () => {
       showPage(Number(btn.dataset.page));
     });
@@ -46,9 +80,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   showPage(1);
 });
-
-
-
 
 const translations = {
   en: {
@@ -152,9 +183,9 @@ function applyLang(lang) {
   document.getElementById("mf-title").textContent = t.title;
   document.getElementById("mf-subtitle").textContent = t.subtitle;
 
-  document.querySelectorAll(".mf-view").forEach(
-    (btn) => (btn.textContent = t.view)
-  );
+  document
+    .querySelectorAll(".mf-view")
+    .forEach((btn) => (btn.textContent = t.view));
 
   document.getElementById("prevBtn").textContent = t.prev;
   document.getElementById("nextBtn").textContent = t.next;
@@ -183,7 +214,7 @@ categorySearch.addEventListener("input", () => {
   const value = categorySearch.value.toLowerCase().trim();
   let anyVisible = false;
 
-  categoryCards.forEach(card => {
+  categoryCards.forEach((card) => {
     const title = card.querySelector("h2").textContent.toLowerCase();
 
     if (title.includes(value)) {
@@ -200,7 +231,6 @@ categorySearch.addEventListener("input", () => {
     pagination.style.display = value ? "none" : "flex";
   }
 });
-
 
 // ================= LOGOUT LOGIC =================
 const logoutLink = document.getElementById("logoutLink");
@@ -220,4 +250,3 @@ function logout() {
   localStorage.removeItem("user");
   window.location.href = "auth.html";
 }
-

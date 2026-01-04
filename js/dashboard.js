@@ -121,7 +121,7 @@ function updateHeaderAndSidebar() {
     headerLogin.style.display = "none";
     logoutLink.style.display = "inline-block";
     userNameSpan.style.display = "inline-block";
-    userNameSpan.textContent = "Hi, " + currentUser.name;
+    userNameSpan.textContent = currentUser.name;
 
     if (sidebarSignin) sidebarSignin.style.display = "none";
   } else {
@@ -154,7 +154,6 @@ const booksChart = new Chart(document.getElementById("booksChart"), {
       "Science",
       "Technology",
       "History",
-      "Art",
       "Business",
       "Mystery",
       "Romance",
@@ -196,7 +195,7 @@ const usersChart = new Chart(document.getElementById("usersChart"), {
     labels: ["Readers", "Admins"],
     datasets: [
       {
-        data: [320, 5],
+        data: [320, 2],
         backgroundColor: ["#ffb400", "#2c2c2c"],
         borderWidth: 0,
       },
@@ -210,4 +209,15 @@ const usersChart = new Chart(document.getElementById("usersChart"), {
       },
     },
   },
+});
+
+// ================= LOGOUT LOGIC =================
+const logoutLink = document.getElementById("logoutLink");
+
+logoutLink.addEventListener("click", () => {
+  if (confirm("Are you sure you want to logout?")) {
+    localStorage.removeItem("isLoggedIn");
+    localStorage.removeItem("user");
+    window.location.href = "../auth.html"; // go to root auth.html
+  }
 });

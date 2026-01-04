@@ -8,25 +8,27 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
     />
-    <link rel="stylesheet" href="css/dashboard.css" />
+    <link rel="stylesheet" href="../css/dashboard.css" />
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-     <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon" />
     <style></style>
   </head>
   <body>
     <div class="sidebar">
       <h2>BookVerse</h2>
       <a href="#"><i class="fa fa-chart-line"></i> Dashboard</a>
-      <a href="#"><i class="fa fa-users"></i> Users</a>
-      <a href="#"><i class="fa fa-book"></i> Books</a>
-      <a href="#"><i class="fa fa-layer-group"></i> Categories</a>
-      <a href="#"><i class="fa fa-envelope"></i> Feedback</a>
+      <a href="user.html"><i class="fa fa-users"></i> Users</a>
+      <a href="books.html"><i class="fa fa-book"></i> Books</a>
+      <a href="categories.html"><i class="fa fa-layer-group"></i> Categories</a>
+      <a href="feedback.html"><i class="fa fa-envelope"></i> Feedback</a>
     </div>
 
     <div class="main">
       <div class="header">
         <h1>Admin Dashboard</h1>
         <span>Welcome, Admin</span>
+        <!-- LOGOUT LINK -->
+        <a href="#" id="logoutLink" class="logout-link">Logout</a>
       </div>
 
       <div class="stats">
@@ -103,6 +105,6 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="js/dashboard.js"></script>
+    <script src="../js/dashboard.js"></script>
   </body>
 </html>

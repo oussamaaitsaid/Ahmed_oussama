@@ -224,18 +224,19 @@ registerForm.addEventListener("submit", (e) => {
   }
 
   const user = {
+    id: Date.now(), // unique ID
     name: fullNameInput.value,
     email: registerEmailInput.value,
     password: regPassword.value,
     phone: phoneInput.value,
     role: "User",
-    createdAt: new Date().toISOString(),
   };
 
   users.push(user);
 
   // Save updated users array
-  localStorage.setItem("libraryUsers", JSON.stringify(users));
+ localStorage.setItem("libraryUsers", JSON.stringify(users));
+
 
   alert("Account created successfully!");
 
@@ -260,7 +261,7 @@ loginForm.addEventListener("submit", (e) => {
       "currentUser",
       JSON.stringify({ name: "Admin", email: adminEmail, role: "Admin" })
     );
-    window.location.href = "dashboard.html"; // redirect to admin dashboard
+    window.location.href = "admin/dashboard.html"; // redirect to admin dashboard
     return;
   }
 

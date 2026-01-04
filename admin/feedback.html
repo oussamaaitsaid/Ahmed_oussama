@@ -1,0 +1,41 @@
+<!-- admin/feedback.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Feedback | BookVerse</title>
+  <link rel="stylesheet" href="../css/dashboard.css" />
+  <link rel="stylesheet" href="css/admin.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+</head>
+<body>
+  <div class="sidebar">
+    <h2>BookVerse</h2>
+    <a href="dashboard.html"><i class="fa fa-chart-line"></i> Dashboard</a>
+    <a href="user.html"><i class="fa fa-users"></i> Users</a>
+    <a href="books.html"><i class="fa fa-book"></i> Books</a>
+    <a href="categories.html"><i class="fa fa-layer-group"></i> Categories</a>
+    <a href="feedback.html" class="active"><i class="fa fa-envelope"></i> Feedback</a>
+  </div>
+
+  <div class="main">
+    <div class="header">
+      <h1>User Feedback</h1>
+    </div>
+
+    <div class="feedback-card">
+      <h4>Alice Brown <span>2026-01-03</span></h4>
+      <p>Love the calm library design and book selection.</p>
+      <button class="delete">Delete</button>
+    </div>
+
+    <div class="feedback-card">
+      <h4>Mark Lee <span>2026-01-02</span></h4>
+      <p>Please add more technology books.</p>
+      <button class="delete">Delete</button>
+    </div>
+  </div>
+  <script src="js/feedback.js"></script>
+</body>
+</html>
