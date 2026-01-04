@@ -1,6 +1,3 @@
-
-
-
 // ================= LOAD CATEGORIES FROM LOCALSTORAGE =================
 const categoriesGrid = document.querySelector(".categories-grid");
 
@@ -11,27 +8,25 @@ let categories = JSON.parse(localStorage.getItem("categories")) || [];
 function renderCategoriesFromAdmin() {
   if (!categoriesGrid) return;
 
-  // Clear existing cards
+  // 🔒 DO NOT REMOVE HTML CARDS IF ADMIN HAS NO DATA
+  if (!categories || categories.length === 0) return;
+
   categoriesGrid.innerHTML = "";
 
   categories.forEach((cat) => {
     const div = document.createElement("div");
-    div.className = `category-card ${cat.name
-      .toLowerCase()
-      .replace(/\s+/g, "")}`;
+    div.className = `category-card ${cat.name.toLowerCase().replace(/\s+/g, "")}`;
     div.innerHTML = `
       <div class="overlay">
-        <h2 id="mf-${cat.name.toLowerCase().replace(/\s+/g, "")}">${
-      cat.name
-    }</h2>
-        <a href="book.html?category=${encodeURIComponent(
-          cat.name
-        )}" class="card-btn mf-view">View Books</a>
+        <h2>${cat.name}</h2>
+        <a href="book.html?category=${encodeURIComponent(cat.name)}"
+           class="card-btn mf-view">View Books</a>
       </div>
     `;
     categoriesGrid.appendChild(div);
   });
 }
+
 
 // Call it before pagination and search logic
 renderCategoriesFromAdmin();
@@ -208,11 +203,13 @@ langSelect.addEventListener("change", () => {
 
 // ================= CATEGORY LIVE SEARCH =================
 const categorySearch = document.getElementById("categorySearch");
-const categoryCards = document.querySelectorAll(".category-card");
+
 
 categorySearch.addEventListener("input", () => {
   const value = categorySearch.value.toLowerCase().trim();
   let anyVisible = false;
+
+  const categoryCards = document.querySelectorAll(".category-card");
 
   categoryCards.forEach((card) => {
     const title = card.querySelector("h2").textContent.toLowerCase();
@@ -225,12 +222,12 @@ categorySearch.addEventListener("input", () => {
     }
   });
 
-  // Disable pagination during search
   const pagination = document.querySelector(".pagination");
   if (pagination) {
     pagination.style.display = value ? "none" : "flex";
   }
 });
+
 
 // ================= LOGOUT LOGIC =================
 const logoutLink = document.getElementById("logoutLink");
