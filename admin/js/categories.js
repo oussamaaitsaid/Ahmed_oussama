@@ -3,28 +3,68 @@ const addBtn = document.querySelector(".add-btn");
 const categoryInput = document.querySelector("input[type='text']");
 const tableBody = document.querySelector("tbody");
 
-// Load existing categories from localStorage
+// Load existing categories from localStorage or initialize with defaults
 let categories = JSON.parse(localStorage.getItem("categories")) || [];
 
-// Render existing categories in table
-// ===== Render existing categories in admin table =====
+// Initialize with default categories if empty
+if (categories.length === 0) {
+  categories = [
+    { name: "Philosophy", books: 7 },
+    { name: "Psychology", books: 5 },
+    { name: "Fantasy", books: 15 },
+    { name: "Fiction", books: 20 },
+    { name: "Science", books: 18 },
+    { name: "Technology", books: 12 },
+    { name: "History", books: 12 },
+    { name: "Art & Design", books: 8 },
+    { name: "Business", books: 10 },
+    { name: "Fairy Tale", books: 6 },
+    { name: "Mystery", books: 4 },
+    { name: "Politics", books: 6 },
+    { name: "Romance", books: 10 },
+    { name: "Thriller", books: 9 },
+    { name: "Adventure", books: 3 },
+    { name: "Self Help", books: 8 },
+    { name: "Poetry", books: 5 },
+    { name: "Biography", books: 7 },
+  ];
+  localStorage.setItem("categories", JSON.stringify(categories));
+}
+
+// ===== Render categories in admin table =====
 function renderCategoriesTable() {
   tableBody.innerHTML = "";
-  categories.forEach((cat) => {
+
+  if (categories.length === 0) {
+    tableBody.innerHTML = `
+      <tr>
+        <td colspan="3" style="text-align: center; padding: 20px;">
+          No categories available. Add one above!
+        </td>
+      </tr>
+    `;
+    return;
+  }
+
+  categories.forEach((cat, index) => {
     const tr = document.createElement("tr");
     tr.innerHTML = `
       <td>${cat.name}</td>
-      <td>${cat.books}</td>
-      <td><button class="delete">Delete</button></td>
+      <td>${cat.books || 0}</td>
+      <td>
+        <button class="delete" data-index="${index}">Delete</button>
+      </td>
     `;
     tableBody.appendChild(tr);
   });
+
   attachDeleteEvents();
 }
 
 // ===== Add Category =====
-addBtn.addEventListener("click", async () => {
+addBtn.addEventListener("click", () => {
   const categoryName = categoryInput.value.trim();
+
   if (!categoryName) {
     alert("Please enter a category name.");
     return;
@@ -44,62 +84,43 @@ addBtn.addEventListener("click", async () => {
   // Ask for number of books
   let bookCount = prompt(`How many books are in "${categoryName}"?`, "0");
   if (bookCount === null) return; // Cancel pressed
+
   bookCount = parseInt(bookCount);
   if (isNaN(bookCount) || bookCount < 0) bookCount = 0;
-
-  // Ask for image
-  let imageFile = await getCategoryImage();
-  let imageData = "";
-  if (imageFile) {
-    imageData = await readFileAsDataURL(imageFile);
-  }
 
   // Add to array and localStorage
   const newCategory = {
     name: categoryName,
     books: bookCount,
-    image: imageData,
   };
+
   categories.push(newCategory);
   localStorage.setItem("categories", JSON.stringify(categories));
 
-  renderCategoriesTable(); // update table
+  renderCategoriesTable();
   categoryInput.value = "";
+
+  alert(`Category "${categoryName}" added successfully!`);
 });
 
 // ===== Delete Category =====
 function attachDeleteEvents() {
   const deleteBtns = document.querySelectorAll(".delete");
-  deleteBtns.forEach((btn, index) => {
+
+  deleteBtns.forEach((btn) => {
     btn.onclick = () => {
-      if (confirm("Are you sure you want to delete this category?")) {
-        categories.splice(index, 1); // remove from array
+      const index = parseInt(btn.dataset.index);
+      const categoryName = categories[index].name;
+
+      if (confirm(`Are you sure you want to delete "${categoryName}"?`)) {
+        categories.splice(index, 1);
         localStorage.setItem("categories", JSON.stringify(categories));
-        renderCategoriesTable(); // update table
+        renderCategoriesTable();
+        alert(`Category "${categoryName}" deleted successfully!`);
       }
     };
   });
 }
 
-// ===== Helpers for Image Upload =====
-function getCategoryImage() {
-  return new Promise((resolve) => {
-    const input = document.createElement("input");
-    input.type = "file";
-    input.accept = "image/*";
-    input.onchange = () => resolve(input.files[0]);
-    input.click();
-  });
-}
-
-function readFileAsDataURL(file) {
-  return new Promise((resolve, reject) => {
-    const reader = new FileReader();
-    reader.onload = (e) => resolve(e.target.result);
-    reader.onerror = (err) => reject(err);
-    reader.readAsDataURL(file);
-  });
-}
-
-// Initial render
+// ===== Initial render =====
 renderCategoriesTable();

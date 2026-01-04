@@ -1,4 +1,3 @@
-<!-- admin/categories.html -->
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -7,6 +6,7 @@
     <title>Categories | BookVerse</title>
     <link rel="stylesheet" href="../css/dashboard.css" />
     <link rel="stylesheet" href="css/admin.css" />
+    <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
@@ -18,6 +18,9 @@
       <a href="dashboard.html"><i class="fa fa-chart-line"></i> Dashboard</a>
       <a href="user.html"><i class="fa fa-users"></i> Users</a>
       <a href="books.html"><i class="fa fa-book"></i> Books</a>
+      <a href="reservations.html"
+        ><i class="fa fa-calendar-check"></i> Reservations</a
+      >
       <a href="categories.html" class="active"
         ><i class="fa fa-layer-group"></i> Categories</a
       >
@@ -44,57 +47,7 @@
             </tr>
           </thead>
           <tbody>
-            <!-- Existing categories (static) -->
-            <tr>
-              <td>Science</td>
-              <td>18</td>
-              <td><button class="delete">Delete</button></td>
-            </tr>
-            <tr>
-              <td>History</td>
-              <td>12</td>
-              <td><button class="delete">Delete</button></td>
-            </tr>
-            <tr>
-              <td>Romance</td>
-              <td>10</td>
-              <td><button class="delete">Delete</button></td>
-            </tr>
-            <tr>
-              <td>Fantasy</td>
-              <td>15</td>
-              <td><button class="delete">Delete</button></td>
-            </tr>
-            <tr>
-              <td>Self Help</td>
-              <td>8</td>
-              <td><button class="delete">Delete</button></td>
-            </tr>
-            <tr>
-              <td>Philosophy</td>
-              <td>7</td>
-              <td><button class="delete">Delete</button></td>
-            </tr>
-            <tr>
-              <td>Psychology</td>
-              <td>5</td>
-              <td><button class="delete">Delete</button></td>
-            </tr>
-            <tr>
-              <td>Politics</td>
-              <td>6</td>
-              <td><button class="delete">Delete</button></td>
-            </tr>
-            <tr>
-              <td>Mystery</td>
-              <td>4</td>
-              <td><button class="delete">Delete</button></td>
-            </tr>
-            <tr>
-              <td>Adventure</td>
-              <td>3</td>
-              <td><button class="delete">Delete</button></td>
-            </tr>
+            <!-- Categories will be rendered here by JavaScript -->
           </tbody>
         </table>
       </div>

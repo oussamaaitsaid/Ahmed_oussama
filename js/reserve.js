@@ -21,12 +21,27 @@ document.getElementById("validateBtn").addEventListener("click", () => {
     return;
   }
 
+  // ===== SAVE RESERVATION TO localStorage =====
+  const reservations = JSON.parse(localStorage.getItem("reservations")) || [];
+
+  reservations.push({
+    id: Date.now(),
+    userName: "Guest User", // You can replace with actual user if logged in
+    userEmail: "guest@example.com", // Replace with real user email
+    bookTitle: book.title,
+    reservedAt: date,
+    pickupDate: date, // optional, same as reserved date for now
+    status: "pending",
+  });
+
+  localStorage.setItem("reservations", JSON.stringify(reservations));
+
   alert(
     `Reservation confirmed!\n\n` +
-    `Book: ${book.title}\n` +
-    `Quantity: ${quantity}\n` +
-    `Date: ${date}\n` +
-    `Reason: ${reason}`
+      `Book: ${book.title}\n` +
+      `Quantity: ${quantity}\n` +
+      `Date: ${date}\n` +
+      `Reason: ${reason}`
   );
 
   window.location.href = "book.html";

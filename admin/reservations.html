@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Reservations | BookVerse</title>
+    <link rel="stylesheet" href="css/admin.css" />
+    <link rel="stylesheet" href="../css/dashboard.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon" />
+  </head>
+  <body>
+    <div class="sidebar">
+      <h2>BookVerse</h2>
+      <a href="dashboard.html"><i class="fa fa-chart-line"></i> Dashboard</a>
+      <a href="user.html"><i class="fa fa-users"></i> Users</a>
+      <a href="books.html"><i class="fa fa-book"></i> Books</a>
+      <a href="reservations.html" class="active"
+        ><i class="fa fa-calendar"></i> Reservations</a
+      >
+      <a href="categories.html"><i class="fa fa-layer-group"></i> Categories</a>
+
+      <a href="feedback.html"><i class="fa fa-envelope"></i> Feedback</a>
+    </div>
+
+    <div class="main">
+      <div class="header">
+        <h1>All Reservations</h1>
+      </div>
+
+      <div class="filters">
+        <input
+          type="text"
+          id="searchInput"
+          placeholder="Search by user or book"
+        />
+        <select id="statusFilter">
+          <option value="">All Status</option>
+          <option value="pending">Pending</option>
+          <option value="approved">Approved</option>
+          <option value="rejected">Rejected</option>
+          <option value="collected">Collected</option>
+        </select>
+      </div>
+
+      <div class="table-box">
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>User Name</th>
+              <th>Email</th>
+              <th>Book Title</th>
+              <th>Reservation Date</th>
+              <th>Pickup Date</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="reservationsBody">
+            <!-- JS will render reservations here -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <script src="js/reservations.js"></script>
+  </body>
+</html>

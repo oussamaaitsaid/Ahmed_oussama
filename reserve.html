@@ -1,41 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <title>Reserve Book</title>
-  <link rel="stylesheet" href="css/reserve.css" />
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Reserve Book</title>
+    <link rel="stylesheet" href="css/reserve.css" />
+    <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon" />
+  </head>
+  <body>
+    <section class="reserve-container">
+      <div class="reserve-card">
+        <img id="bookImage" alt="Book Image" />
 
-  <section class="reserve-container">
-    <div class="reserve-card">
+        <div class="reserve-info">
+          <h2 id="bookTitle"></h2>
+          <h4 id="bookCategory"></h4>
+          <p id="bookDescription"></p>
 
-      <img id="bookImage" alt="Book Image" />
+          <label>Quantity</label>
+          <input type="number" id="quantity" min="1" value="1" />
 
-      <div class="reserve-info">
-        <h2 id="bookTitle"></h2>
-        <h4 id="bookCategory"></h4>
-        <p id="bookDescription"></p>
+          <label>Reservation Date</label>
+          <input type="date" id="date" />
 
-        <label>Quantity</label>
-        <input type="number" id="quantity" min="1" value="1" />
+          <label>Reason</label>
+          <select id="reason">
+            <option value="Buy">Buy</option>
+            <option value="Borrow">Borrow</option>
+            <option value="Read">Read</option>
+          </select>
 
-        <label>Reservation Date</label>
-        <input type="date" id="date" />
-
-        <label>Reason</label>
-        <select id="reason">
-          <option value="Buy">Buy</option>
-          <option value="Borrow">Borrow</option>
-          <option value="Read">Read</option>
-        </select>
-
-        <button id="validateBtn">Validate Reservation</button>
+          <button id="validateBtn">Validate Reservation</button>
+        </div>
       </div>
+    </section>
 
-    </div>
-  </section>
-
-  <script src="js/reserve.js"></script>
-</body>
+    <script src="js/reserve.js"></script>
+  </body>
 </html>

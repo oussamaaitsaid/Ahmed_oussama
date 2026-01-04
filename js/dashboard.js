@@ -221,3 +221,264 @@ logoutLink.addEventListener("click", () => {
     window.location.href = "../auth.html"; // go to root auth.html
   }
 });
+
+// ==================== ADDITIONAL ENHANCEMENTS ====================
+
+// ===== DYNAMIC BOOKS TABLE =====
+function loadBooksTable() {
+  const booksTableContainer = document.querySelector(
+    ".table-box:nth-of-type(2)"
+  );
+  if (!booksTableContainer) return;
+
+  const books = JSON.parse(localStorage.getItem("books")) || [];
+  const table = booksTableContainer.querySelector("table");
+
+  // Clear existing rows except header
+  const tbody = table.querySelector("tbody") || table;
+  const existingRows = tbody.querySelectorAll("tr:not(:first-child)");
+  existingRows.forEach((row) => row.remove());
+
+  if (books.length === 0) {
+    const tr = document.createElement("tr");
+    tr.innerHTML = `
+      <td colspan="4" style="text-align: center; padding: 20px;">
+        No books available. <a href="books.html" style="color: #ffb400;">Add books here</a>
+      </td>
+    `;
+    tbody.appendChild(tr);
+    return;
+  }
+
+  // Show first 5 books
+  books.slice(0, 5).forEach((book, index) => {
+    const tr = document.createElement("tr");
+    tr.innerHTML = `
+      <td>${book.title || "Untitled"}</td>
+      <td>${book.category || "N/A"}</td>
+      <td>$${book.price || "0"}</td>
+      <td class="actions">
+        <button class="edit" onclick="window.location.href='books.html'">Edit</button>
+        <button class="delete" onclick="deleteBook(${index})">Delete</button>
+      </td>
+    `;
+    tbody.appendChild(tr);
+  });
+}
+
+function deleteBook(index) {
+  let books = JSON.parse(localStorage.getItem("books")) || [];
+  if (confirm("Are you sure you want to delete this book?")) {
+    books.splice(index, 1);
+    localStorage.setItem("books", JSON.stringify(books));
+    loadBooksTable();
+    updateDashboardStats();
+  }
+}
+
+// ===== DYNAMIC FEEDBACK SECTION =====
+function loadFeedback() {
+  const feedbackContainer = document.querySelector(".feedback");
+  if (!feedbackContainer) return;
+
+  const feedbacks = JSON.parse(localStorage.getItem("feedbacks")) || [];
+
+  // Keep h3 title
+  const title = feedbackContainer.querySelector("h3");
+  feedbackContainer.innerHTML = "";
+  if (title) feedbackContainer.appendChild(title);
+
+  if (feedbacks.length === 0) {
+    const p = document.createElement("p");
+    p.textContent = "No feedback received yet.";
+    p.style.textAlign = "center";
+    p.style.color = "#999";
+    feedbackContainer.appendChild(p);
+    return;
+  }
+
+  // Show latest 5 feedbacks
+  feedbacks
+    .slice(-5)
+    .reverse()
+    .forEach((feedback) => {
+      const p = document.createElement("p");
+      p.innerHTML = `<strong>${feedback.name || "Anonymous"}:</strong> ${
+        feedback.message
+      }`;
+      feedbackContainer.appendChild(p);
+    });
+}
+
+// ===== ADD TWO MORE CHARTS =====
+function createAdditionalCharts() {
+  const chartsDiv = document.querySelector(".charts");
+  if (!chartsDiv) return;
+
+  // Chart 3: Reservations Status
+  const reservationsChartBox = document.createElement("div");
+  reservationsChartBox.className = "chart-box";
+  reservationsChartBox.innerHTML = '<canvas id="reservationsChart"></canvas>';
+  chartsDiv.appendChild(reservationsChartBox);
+
+  // Chart 4: Monthly Activity
+  const activityChartBox = document.createElement("div");
+  activityChartBox.className = "chart-box";
+  activityChartBox.innerHTML = '<canvas id="activityChart"></canvas>';
+  chartsDiv.appendChild(activityChartBox);
+
+  // Create the charts
+  createReservationsChart();
+  createActivityChart();
+}
+
+// ===== RESERVATIONS STATUS CHART =====
+function createReservationsChart() {
+  const canvas = document.getElementById("reservationsChart");
+  if (!canvas) return;
+
+  const reservations = JSON.parse(localStorage.getItem("reservations")) || [];
+
+  const statusCounts = {
+    pending: 0,
+    approved: 0,
+    rejected: 0,
+    collected: 0,
+  };
+
+  reservations.forEach((res) => {
+    if (statusCounts.hasOwnProperty(res.status)) {
+      statusCounts[res.status]++;
+    }
+  });
+
+  new Chart(canvas, {
+    type: "doughnut",
+    data: {
+      labels: ["Pending", "Approved", "Rejected", "Collected"],
+      datasets: [
+        {
+          data: [
+            statusCounts.pending,
+            statusCounts.approved,
+            statusCounts.rejected,
+            statusCounts.collected,
+          ],
+          backgroundColor: ["#FFC107", "#4CAF50", "#F44336", "#2196F3"],
+          borderWidth: 2,
+          borderColor: "#fff",
+        },
+      ],
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: { position: "bottom" },
+        title: {
+          display: true,
+          text: "Reservations Status",
+          font: { size: 16 },
+        },
+      },
+      animation: {
+        animateRotate: true,
+        animateScale: true,
+      },
+    },
+  });
+}
+
+// ===== MONTHLY ACTIVITY CHART =====
+function createActivityChart() {
+  const canvas = document.getElementById("activityChart");
+  if (!canvas) return;
+
+  const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun"];
+  const newUsers = [12, 19, 15, 25, 22, 30];
+  const newBooks = [5, 8, 12, 15, 18, 22];
+
+  new Chart(canvas, {
+    type: "line",
+    data: {
+      labels: months,
+      datasets: [
+        {
+          label: "New Users",
+          data: newUsers,
+          borderColor: "#ffb400",
+          backgroundColor: "rgba(255, 180, 0, 0.1)",
+          borderWidth: 3,
+          tension: 0.4,
+          fill: true,
+        },
+        {
+          label: "New Books",
+          data: newBooks,
+          borderColor: "#2c2c2c",
+          backgroundColor: "rgba(44, 44, 44, 0.1)",
+          borderWidth: 3,
+          tension: 0.4,
+          fill: true,
+        },
+      ],
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: { position: "top" },
+        title: {
+          display: true,
+          text: "Monthly Activity",
+          font: { size: 16 },
+        },
+      },
+      scales: {
+        y: {
+          beginAtZero: true,
+          ticks: { stepSize: 5 },
+        },
+      },
+      animation: {
+        duration: 1500,
+        easing: "easeInOutQuart",
+      },
+    },
+  });
+}
+
+// ===== SMOOTH STAT CARDS ANIMATION =====
+function animateStatCards() {
+  const statCards = document.querySelectorAll(".stat-card");
+  statCards.forEach((card, index) => {
+    card.style.opacity = "0";
+    card.style.transform = "translateY(20px)";
+    card.style.transition = "all 0.5s ease";
+
+    setTimeout(() => {
+      card.style.opacity = "1";
+      card.style.transform = "translateY(0)";
+    }, index * 100);
+  });
+}
+
+// ===== AUTO-REFRESH STATS EVERY 30 SECONDS =====
+function startAutoRefresh() {
+  setInterval(() => {
+    updateDashboardStats();
+    loadUsersTable();
+    loadBooksTable();
+    loadFeedback();
+  }, 30000); // 30 seconds
+}
+
+// ===== INITIALIZE ALL ENHANCEMENTS =====
+document.addEventListener("DOMContentLoaded", () => {
+  // Wait a bit for existing code to run first
+  setTimeout(() => {
+    loadBooksTable();
+    loadFeedback();
+    createAdditionalCharts();
+    animateStatCards();
+    startAutoRefresh();
+  }, 100);
+});
